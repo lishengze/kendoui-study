@@ -11,8 +11,9 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
-    "atom-space-pen-views": "^2.1.1",
-    "underscore-plus": "^1.0.6",
+    "atom-space-pen-views": "^2.0.0",
+    "underscore-plus": "^1.0.0",
+    "socket.io-client": "",
     "space-pen": "^5.1.2"
   },
   "consumedServices": {

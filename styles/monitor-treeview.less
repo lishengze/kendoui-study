@@ -2,7 +2,18 @@
 //
 // See https://github.com/atom/atom-dark-ui/blob/master/styles/ui-variables.less
 // for a full listing of what's available.
-@import "ui-variables";
 
+@import "ui-variables";
 .monitor-treeview {
+  -webkit-user-select: none; //内容不可选
+}
+.tree-view-resizer {
+  -webkit-user-select: none; //内容不可选
+  .tree-view-resize-handle {
+    cursor: ew-resize;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -5px;
+  }
 }
