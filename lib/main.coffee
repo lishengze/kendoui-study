@@ -1,7 +1,11 @@
 SidebarIconView = require './sidebarIcon-view'
 {CompositeDisposable} = require 'atom'
 PanelView = require './panel-view.coffee'
-
+# gridDemoUri = 'atom://gridDemo'
+creatGridDemo = (state)->
+  Demo = require './gridDemoView.coffee'
+  console.log '#{state}'
+  new Demo(state)
 module.exports =
   consumeSidebar: (@sidebar) ->
     @panelView = new PanelView()
@@ -13,7 +17,10 @@ module.exports =
   activate: (state) ->
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
-
+    atom.workspace.addOpener (filePath) ->
+      creatGridDemo(uri: filePath )
+      # switch filePath
+      #   when gridDemoUri then creatGridDemo(uri: gridDemoUri)
   deactivate: ->
     @subscriptions?.dispose()
     @panel?.destroy()
