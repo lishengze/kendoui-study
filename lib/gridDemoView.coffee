@@ -34,4 +34,4 @@ class Demo extends ScrollView
 
   getURI: -> @uri
 
-  getTitle: (state)-> '属性展示'
+  getTitle: (state)-> '事件'
