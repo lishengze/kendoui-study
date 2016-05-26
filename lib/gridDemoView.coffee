@@ -6,25 +6,29 @@ $=require('atom-space-pen-views').$
 
 module.exports =
 class Demo extends ScrollView
-  @content: ->
+  @content : (params) ->
     @div class: 'baobiaoContainer pane-item native-key-bindings timecop', tabindex: -1, =>
-      @div class : 'leftContainer', =>
-        @div class: 'gridOne' + @uri.substr(20)
-      @div class: 'rizhi'
-      @div class: 'CPUUsageModel', =>
+      @div id : 'leftContainer'+ params.index, class: 'leftContainer', =>
+        @div id: 'gridOne'  + params.index, class: 'gridOne'
+      @div id: 'rizhi' + params.index, class: 'rizhi'
+      @div id: 'CPUUsageModel' + params.index, class: 'CPUUsageModel', =>
         @div class: 'toolbar k-grid-toolbar'
-        @div class: 'CPUUsage highstockChart'
+        @div id: 'CPUUsage' + params.index, class: 'CPUUsage highstockChart'
   attached: ->
     {setup}=require './gridDemo.js'
     {beginReceiveData}=require './gridDemo.js'
-    setup()
-    beginReceiveData()
+    setup(@index)
+    beginReceiveData(@index)
 
   detached: ->
     {stopReceiveData}=require './gridDemo.js'
     stopReceiveData()
 
-  initialize: ({@uri}) ->
+  initialize: ({@uri,@index}) ->
+    console.log @index
+    # view = new Demo
+    # view.find('div').append('<div class = "leftContainer"></div>')
+    # @addClass('leftContainer')
     # alert 'haha'
     # alert('summary is:'+@summary);
     # alert('summary class is:'+@summary.attr('class'));
@@ -36,4 +40,4 @@ class Demo extends ScrollView
   getURI: -> @uri
 
   getTitle: ->
-    @uri.substr(19)
+    @uri.substring(19)

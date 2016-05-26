@@ -4,7 +4,7 @@ PanelView = require './panel-view.coffee'
 # gridDemoUri = 'atom://gridDemo'
 creatGridDemo = (state)->
   Demo = require './gridDemoView.coffee'
-  # console.log state.uri
+  console.log state
   @p = new Demo(state)
   # @p.getTitle state.uri
   # @p
@@ -19,9 +19,10 @@ module.exports =
   activate: (state) ->
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
+    index = 0
     atom.workspace.addOpener (filePath) ->
       # console.log filePath
-      creatGridDemo(uri: filePath)
+      creatGridDemo({uri: filePath,index : index++})
     #   switch filePath
     #     when gridDemoUri then creatGridDemo(uri: gridDemoUri)
   deactivate: ->

@@ -541,20 +541,16 @@ creatGridDemo = (state) ->
 #   select: onSelect,
 #   change: function (e) {}
 # }).data('kendoTreeView')
-# num = 0
-
 onSelect = (e) ->
   dataItem = treeview.dataItem(e.node)
   # console.log('items' in dataItem)
   # console.log(dataItem.hasOwnProperty(length))
   if 'items' of dataItem == false or dataItem.items.length == 0
-    # num += 1
     # 判断是否叶子节点
     # 打开url
     # i ++
-    # uri = 'atom://gridViewDemo' + num + dataItem.text
-
     uri = 'atom://gridViewDemo' + dataItem.text
+    # uri = 'atom://gridViewDemo' + dataItem.text
     # console.log 'open uri'
     # atom.workspace.addOpener (uri) ->
     #   console.log 'addopen!!!!!!'
