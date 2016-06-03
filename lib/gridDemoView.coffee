@@ -9,9 +9,9 @@ class Demo extends ScrollView
   @content : (params) ->
     @div class: 'baobiaoContainer pane-item native-key-bindings timecop', tabindex: -1, =>
       @div id : 'leftContainer'+ params.index, class: 'leftContainer', =>
-        @div id: 'gridOne'  + params.index, class: 'gridOne'
-      @div id: 'rizhi' + params.index, class: 'rizhi'
-      @div id: 'CPUUsageModel' + params.index, class: 'CPUUsageModel', =>
+        @div id: 'gridOne'  + params.index, class: 'gridOne AttrItem'
+      @div id: 'rizhi' + params.index, class: 'rizhi AttrItem'
+      @div id: 'CPUUsageModel' + params.index, class: 'CPUUsageModel AttrItem', =>
         @div class: 'toolbar k-grid-toolbar'
         @div id: 'CPUUsage' + params.index, class: 'CPUUsage highstockChart'
   attached: ->
