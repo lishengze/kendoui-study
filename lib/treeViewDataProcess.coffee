@@ -70,10 +70,9 @@ beginReceiveData = (@TreeviewList, @menu)->
     filter: '.k-in'
     select: treeSelect
   reqMonitorObjectTopicData = new (userApiStruct.CShfeFtdcReqQryMonitorObjectField)
-  userApi.emitter.on 'Login Succeed', (data) ->
-    userApi.childProcess.send
-      event: EVENTS.ReqQryMonitorObjectTopic
-      reqField: reqMonitorObjectTopicData
+  userApi.emitter.on EVENTS.RspQrySysUserLoginTopic, (data) ->
+    if data.hasOwnProperty 'pRspQrySysUserLogin'
+      userApi.emitter.emit EVENTS.ReqQryMonitorObjectTopic, reqMonitorObjectTopicData
     return
   treeviewData1 = []  # 后台传递的原始数据
   userApi.emitter.on EVENTS.RspQryMonitorObjectTopic, (data) ->
