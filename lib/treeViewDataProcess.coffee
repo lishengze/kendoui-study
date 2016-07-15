@@ -76,11 +76,12 @@ beginReceiveData = (@TreeviewList, @menu)->
   ReqQryMonitorObjectTopicField.rspMessage =  EVENTS.RspQryMonitorObjectTopic + ReqQryMonitorObjectTopicField.RequestId
 
   userApi.emitter.on 'Login Succeed', (data) =>
-    console.log('Login in')
+    console.log 'Login in'
     userApi.emitter.emit EVENTS.ReqQryMonitorObjectTopic, ReqQryMonitorObjectTopicField
 
   treeviewData1 = []  # 后台传递的原始数据
-  userApi.emitter.on ReqQryMonitorObjectTopicField.rspMessage, (data) ->
+  userApi.emitter.on EVENTS.RspQryMonitorObjectTopic, (data) ->
+    console.log 'data received'
     treeviewData1.push data.pRspQryMonitorObject
     if data.bIsLast == true #所有数据传输
       treeviewData = arrayConverseToJson(treeviewData1)
