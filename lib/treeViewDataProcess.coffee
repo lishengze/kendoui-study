@@ -80,7 +80,7 @@ beginReceiveData = (@TreeviewList, @menu)->
     userApi.emitter.emit EVENTS.ReqQryMonitorObjectTopic, ReqQryMonitorObjectTopicField
 
   treeviewData1 = []  # 后台传递的原始数据
-  userApi.emitter.on EVENTS.RspQryMonitorObjectTopic, (data) ->
+  userApi.emitter.on ReqQryMonitorObjectTopicField.rspMessage, (data) ->
     treeviewData1.push data.pRspQryMonitorObject
     if data.bIsLast == true #所有数据传输
       treeviewData = arrayConverseToJson(treeviewData1)
