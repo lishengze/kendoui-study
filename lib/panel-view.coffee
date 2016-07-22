@@ -21,7 +21,7 @@ class PanelView extends ScrollView
         @div class: 'tree-view-resize-handle'
         @ul id:'menu', outlet: 'menu',=>
           @li id:'rename',=>
-            @i class: 'fa fa-coffee', 'rename'
+            @i class: 'fa fa-coffee', 'Rename'
           @li id:'delete', =>
             @i class: 'fa fa-times', 'Delete'
   attached: ->
