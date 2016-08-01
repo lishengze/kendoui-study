@@ -69,15 +69,33 @@ beginReceiveData = (@TreeviewList, @menu)->
     target: treeViewNode
     filter: '.k-in'
     select: treeSelect
-  reqMonitorObjectTopicData = new (userApiStruct.CShfeFtdcReqQryMonitorObjectField)
+  reqMonitorObjectTopicData = new userApiStruct.CShfeFtdcReqQryMonitorObjectField()
   ReqQryMonitorObjectTopicField = {}
   ReqQryMonitorObjectTopicField.reqObject = reqMonitorObjectTopicData
   ReqQryMonitorObjectTopicField.RequestId = ++ window.ReqQryMonitorObjectTopicRequestID
   ReqQryMonitorObjectTopicField.rspMessage =  EVENTS.RspQryMonitorObjectTopic + ReqQryMonitorObjectTopicField.RequestId
 
-  userApi.emitter.on 'Login Succeed', (data) =>
+  netMonitorAttrerScope               = new userApiStruct.CShfeFtdcReqQryNetMonitorAttrScopeField()
+  netMonitorAttrerScope.OperationType = 0;
+  netMonitorAttrerScope.ID            = 0;
+  netMonitorAttrerScope.CName         = " ";
+  netMonitorAttrerScope.EName         = " ";
+  netMonitorAttrerScope.Comments      = " ";
+
+  netMonitorAttrerScopeField4            = {}
+  netMonitorAttrerScopeField4.reqObject  = netMonitorAttrerScope
+  netMonitorAttrerScopeField4.RequestId  = ++window.ReqQryNetMonitorAttrScopeTopicRequestID;
+  netMonitorAttrerScopeField4.rspMessage = EVENTS.RspQryNetMonitorAttrScopeTopic + netMonitorAttrerScopeField4.RequestId
+
+  userApi.emitter.on EVENTS.RspQyrUserLoginSucceed, (data) =>
     console.log 'Login in'
     userApi.emitter.emit EVENTS.ReqQryMonitorObjectTopic, ReqQryMonitorObjectTopicField
+
+    userApi.emitter.emit EVENTS.ReqQryNetMonitorAttrScopeTopic, netMonitorAttrerScopeField4
+
+    userApi.emitter.on netMonitorAttrerScopeField4.rspMessage, (data) =>
+      console.log netMonitorAttrerScopeField4.rspMessage
+      console.log data
 
   treeviewData1 = []  # 后台传递的原始数据
   userApi.emitter.on ReqQryMonitorObjectTopicField.rspMessage, (data) ->

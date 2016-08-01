@@ -16,9 +16,15 @@ class Demo extends ScrollView
       @div id : 'leftContainer'+ params.index, class: 'leftContainer', =>
         @div id: 'gridOne'  + params.index, class: 'gridOne AttrItem'
       @div id: 'rizhi' + params.index, class: 'rizhi AttrItem'
-      @div id: 'CPUUsageModel' + params.index, class: 'CPUUsageModel AttrItem', =>
-        @div class: 'toolbar k-grid-toolbar'
-        @div id: 'CPUUsage' + params.index, class: 'CPUUsage highstockChart'
+      @div id: 'DisUsageModel' + params.index, class: 'UsageModel AttrItem', =>
+        @div id: 'DisUsageToolbar' + params.index, class: 'toolbar k-grid-toolbar'
+        @div id: 'DisUsage' + params.index, class: 'highstockChart'
+      @div id: 'CPUUsageModel' + params.index, class: 'UsageModel AttrItem', =>
+        @div id: 'CPUUsageToolbar' + params.index, class: 'toolbar k-grid-toolbar'
+        @div id: 'CPUUsage' + params.index, class: 'highstockChart'
+      @div id: 'TestUsageModel' + params.index, class: 'UsageModel AttrItem', =>
+        @div id: 'TestUsageToolbar' + params.index, class: 'toolbar k-grid-toolbar'
+        @div id: 'TestUsage' + params.index, class: 'highstockChart
   attached: ->
     {setup}=require './gridDemo.js'
     {beginReceiveData}=require './gridDemo.js'
