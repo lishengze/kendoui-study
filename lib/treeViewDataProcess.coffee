@@ -63,12 +63,14 @@ beginReceiveData = (@TreeviewList, @menu)->
     select: onSelect
     change: (e) ->
   ).data('kendoTreeView')
+
   console.log 'begin receive data'
   MenuNode = @menu
   $(MenuNode).kendoContextMenu
     target: treeViewNode
     filter: '.k-in'
     select: treeSelect
+
   reqMonitorObjectTopicData = new userApiStruct.CShfeFtdcReqQryMonitorObjectField()
   ReqQryMonitorObjectTopicField = {}
   ReqQryMonitorObjectTopicField.reqObject = reqMonitorObjectTopicData

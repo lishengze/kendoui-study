@@ -24,7 +24,7 @@ class Demo extends ScrollView
         @div id: 'CPUUsage' + params.index, class: 'highstockChart'
       @div id: 'TestUsageModel' + params.index, class: 'UsageModel AttrItem', =>
         @div id: 'TestUsageToolbar' + params.index, class: 'toolbar k-grid-toolbar'
-        @div id: 'TestUsage' + params.index, class: 'highstockChart
+        @div id: 'TestUsage' + params.index, class: 'highstockChart'
   attached: ->
     {setup}=require './gridDemo.js'
     {beginReceiveData}=require './gridDemo.js'
