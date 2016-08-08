@@ -80,6 +80,38 @@
           </script>
         </div>
 
+        <div id="chart">
+          <script>
+              $("#chart").kendoChart({
+            title: {
+                text: "Employee Sales"
+            },
+              dataSource: new kendo.data.DataSource({
+                  data: [
+                  {
+                      employee: "Joe Smith",
+                      sales: 2000
+                  },
+                  {
+                      employee: "Jane Smith",
+                      sales: 2250
+                  },
+                  {
+                      employee: "Will Roberts",
+                      sales: 1550
+                  }]
+              }),
+              series: [{
+                  type: "line",
+                  field: "sales",
+                  name: "Sales in Units"
+              }],
+              categoryAxis: {
+                  field: "employee"
+              }
+          });
+        </script>
+      </div>
 
     </body>
 </html>

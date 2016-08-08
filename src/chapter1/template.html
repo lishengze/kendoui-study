@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Kendo UI Template</title>
+        <meta charset="utf-8">
+        <link href="../../lib/kendoui/styles/kendo.common.min.css" rel="stylesheet" />
+        <link href="../../lib/kendoui/styles/kendo.rtl.min.css" rel="stylesheet">
+        <link href="../../lib/kendoui/styles/kendo.black.min.css" rel="stylesheet">
+        <link href="../../lib/kendoui/styles/kendo.default.min.css" rel="stylesheet" />
+        <link href="../../lib/kendoui/styles/kendo.dataviz.min.css" rel="stylesheet" />
+        <link href="../../lib/kendoui/styles/kendo.dataviz.default.min.css" rel="stylesheet">
+
+
+        <script src="../../lib/kendoui/js/kendo.all.min.js"></script>
+        <script src="../../lib/kendoui/js/jquery.min.js"></script>
+        <script src="../../lib/kendoui/js/jszip.min.js"></script>
+        <script src="../../lib/kendoui/js/kendo.web.min.js"></script>
+        <script src="../../lib/kendoui/js/kendo.dataviz.min.js"></script>
+
+    </head>
+    <body>
+      <div id="literal">
+        <script>
+          var template = kendo.template("<div id='box'> #= firstName #</div>");
+          var data = {firstName: '<b>html</b>'};
+          var result = template(data);
+          $("#literal").html(result);
+        </script>
+      </div>
+
+      <div id="htmlData"></div>
+      <script>
+      	var template = kendo.template("<div id='box'>#: firstName #</div>");
+      	var data = { firstName: "<b>html</b>" }; //Data with HTML tags
+      	var result = template(data); //Pass the data to the compiled template
+      	$("#htmlData").html(result); //display the resulting encoded HTML Output (<b>Todd</b>)
+      </script>
+
+      <div id="example"></div>
+
+      <script id="javascriptTemplate" type="text/x-kendo-template">
+      	<ul>
+      	# for (var i = 0; i < data.length; i++) { #
+      		<li>#= data[i] #</li>
+      	# } #
+      	</ul>
+      </script>
+
+      <script type="text/javascript">
+      	//Get the external template definition using a jQuery selector
+      	var template = kendo.template($("#javascriptTemplate").html());
+
+      	//Create some dummy data
+      	var data = ["Todd", "Steve", "Burke"];
+
+      	var result = template(data); //Execute the template
+      	$("#example").html(result); //Append the result
+      </script>
+
+
+    </body>
+</html>
