@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Kendo UI Template</title>
+        <title>Kendo UI TreeView</title>
         <meta charset="utf-8">
         <link href="../../lib/kendoui/styles/kendo.common.min.css" rel="stylesheet" />
         <link href="../../lib/kendoui/styles/kendo.rtl.min.css" rel="stylesheet">
@@ -19,6 +19,19 @@
 
     </head>
     <body>
-      
+      <div id="view1">
+        <input data-bind="value: name"/>
+        <button data-bind="click: display"> display </button>
+        <script>
+          var view1Modal = kendo.observable({
+            name: "Lee",
+            display: function(){
+              var name=this.get("name");
+              alert("Hello " + name + "!");
+            }
+          });
+          kendo.bind($("#view1"), view1Modal);
+        </script>
+      </div>
     </body>
   </html>

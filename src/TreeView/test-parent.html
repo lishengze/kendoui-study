@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Kendo UI Template</title>
+        <title>Kendo UI TreeView</title>
         <meta charset="utf-8">
         <link href="../../lib/kendoui/styles/kendo.common.min.css" rel="stylesheet" />
         <link href="../../lib/kendoui/styles/kendo.rtl.min.css" rel="stylesheet">
@@ -19,6 +19,31 @@
 
     </head>
     <body>
-      
+
+        <div id="treeview"></div>
+        <script>
+        $("#treeview").kendoTreeView({
+          dataSource: [
+            { text: "foo", items: [
+              { text: "bar" },
+              { text: "car" }
+            ] },
+            { text: "zoom", items: [
+              { text: "bar" },
+              { text: "tar" }
+            ] }
+          ]
+        });
+
+        var treeview = $("#treeview").data("kendoTreeView");
+        console.log(treeview);
+
+        var parent = treeview.parent(treeview.findByText("bar"));
+        console.log(treeview.text(parent));
+
+        parent = treeview.parent(parent);
+        console.log(parent.length); // logs 0
+        </script>
+
     </body>
-  </html>
+</html>
