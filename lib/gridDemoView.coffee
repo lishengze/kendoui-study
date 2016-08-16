@@ -14,7 +14,7 @@ class Demo extends ScrollView
         @button  class: 'SplitScreenBtn btn btn-lg', id:'ThreeSplitScreen', '三分屏'
         @button  class: 'SplitScreenBtn btn btn-lg', id: 'FourSplitScreen', '四分屏'
       @div id : 'leftContainer'+ params.index, class: 'leftContainer', =>
-        @div id: 'gridOne'  + params.index, class: 'gridOne AttrItem'
+        @div id: 'gridOne'  + params.index, class: 'gridOne'
       @div id: 'rizhi' + params.index, class: 'rizhi AttrItem'
       @div id: 'DisUsageModel' + params.index, class: 'UsageModel AttrItem', =>
         @div id: 'DisUsageToolbar' + params.index, class: 'toolbar k-grid-toolbar'
