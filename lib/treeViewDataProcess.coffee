@@ -1,3 +1,5 @@
+ ##treeview 节点数据转化处理模块。
+
 # var setup = function () {
 # var html = '<div>\
 #        <div><button class="k-button" id="collapseAllNodes">Collapse</button>\
