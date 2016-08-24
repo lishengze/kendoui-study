@@ -10,10 +10,10 @@ class Demo extends ScrollView
     @div class: 'baobiaoContainer pane-item native-key-bindings timecop', tabindex: -1, =>
       @div id : 'leftContainer'+ params.index, class: 'leftContainer', =>
         @div class: 'block',=>
-          @button  class: 'SplitScreenBtn btn btn-lg', id:'ASplitScreen', '一分屏'
-          @button  class: 'SplitScreenBtn btn btn-lg', id: 'BinaryScreen', '二分屏'
-          @button  class: 'SplitScreenBtn btn btn-lg', id:'ThreeSplitScreen', '三分屏'
-          @button  class: 'SplitScreenBtn btn btn-lg', id: 'FourSplitScreen', '四分屏'
+          @button  class: 'SplitScreenBtn btn btn-lg', id: 'ASplitScreen' + params.index, '一分屏'
+          @button  class: 'SplitScreenBtn btn btn-lg', id: 'BinaryScreen' + params.index, '二分屏'
+          @button  class: 'SplitScreenBtn btn btn-lg', id: 'ThreeSplitScreen' + params.index, '三分屏'
+          @button  class: 'SplitScreenBtn btn btn-lg', id: 'FourSplitScreen' + params.index, '四分屏'
         @div id: 'gridOne'  + params.index, class: 'gridOne'
       @div id: 'rizhi' + params.index, class: 'rizhi AttrItem'
       @div id: 'DisUsageModel' + params.index, class: 'UsageModel AttrItem', =>
