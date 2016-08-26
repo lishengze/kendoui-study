@@ -58,7 +58,7 @@ treeview = null; #全局 treeview
 beginReceiveData = (@TreeviewList, @menu)->
   treeViewNode = @TreeviewList
   treeview = $(treeViewNode).kendoTreeView(
-    template: '<i class=\'#= item.FrontAwesomeClass #\'></i>#=  item.text #'
+    template: '<i class=\'#= item.FrontAwesomeClass #\' id=\'#=item.id#\'></i>#=  item.text #'
     dragAndDrop: true
     animation: false
     loadOnDemand: false
@@ -441,6 +441,7 @@ process = (data, finalRst) ->
     itemsArray.push
       'text': if distance > 1 then 'exception!' else data.ObjectName
       'curID': idArray[tracePath.length]
+      'id': if distance > 1 then 'exception!' else data.ObjectID
       'FrontAwesomeClass': WarningType(data.WarningActive)
       'items': if idArray[idArrayLength - 2] == 'os' then osLeafNodeData else []
     if distance > 1
@@ -568,21 +569,38 @@ creatGridDemo = (state) ->
 #   change: function (e) {}
 # }).data('kendoTreeView')
 onSelect = (e) ->
+  console.log(e)
   dataItem = treeview.dataItem(e.node)
-  # console.log('items' in dataItem)
-  # console.log(dataItem.hasOwnProperty(length))
+  console.log dataItem.id
+  reqQryOidRelationData = new userApiStruct.CShfeFtdcReqQryOidRelationField()
+  reqQryOidRelationData.ObjectID = dataItem.id
+  reqQryOidRelationField = {}
+  reqQryOidRelationField.reqObject  = reqQryOidRelationData
+  reqQryOidRelationField.RequestId  = ++window.ReqQryOidRelationTopicRequestID
+  reqQryOidRelationField.rspMessage = EVENTS.RspQryOidRelationTopic + reqQryOidRelationField.RequestId
+  window.reqQryOidRelationField = reqQryOidRelationField;
+  window.isPageID = true;
+  rspData = []
+  userApi.emitter.emit EVENTS.ReqQryOidRelationTopic, reqQryOidRelationField
+
+  userApi.emitter.on reqQryOidRelationField.rspMessage, (data)->
+    # console.log reqQryOidRelationField.rspMessage
+    # console.log data
+    if data.hasOwnProperty 'pRspQryOidRelation'
+      rspData.push data.pRspQryOidRelation
+      if data.bIsLast == true
+        gridID = getObjectID(data.pRspQryOidRelation.ObjectID)
+        gridDataEventName = gridID
+        console.log "gridDataEventName: "+ gridDataEventName
+
+        userApi.emitter.emit gridDataEventName, {'rspData':rspData, 'gridID':gridID}
+
+        rspData = []
+
   if 'items' of dataItem == false or dataItem.items.length == 0
-    # 判断是否叶子节点
-    # 打开url
-    # i ++
-    uri = 'atom://gridViewDemo' + dataItem.text
-    # uri = 'atom://gridViewDemo' + dataItem.text
-    # console.log 'open uri'
-    # atom.workspace.addOpener (uri) ->
-    #   console.log 'addopen!!!!!!'
-    #   creatGridDemo uri
+    uri = 'atom://gridViewDemo' + dataItem.id
     atom.workspace.open uri
-    # console.log 'hha'
+
   return
 
 module.exports.beginReceiveData = beginReceiveData

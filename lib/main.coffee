@@ -8,6 +8,13 @@ creatGridDemo = (state)->
   @p = new Demo(state)
   # @p.getTitle state.uri
   # @p
+window.getObjectID = (originalString) ->
+  stringArray = originalString.split(".")
+  transString = ""
+  for value in stringArray
+    transString += value
+  return transString
+
 module.exports =
   consumeSidebar: (@sidebar) ->
     @panelView = new PanelView() #左侧 package内容栏
@@ -19,12 +26,16 @@ module.exports =
   activate: (state) ->
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
-    index = 0
+    window.index = 0
+    window.registerRtnObjectAttrTopic   = false;
+    window.IsRspQryOidRelationTopicDone = false;
+
     atom.workspace.addOpener (filePath) ->
-      # console.log filePath
-      creatGridDemo({uri: filePath,index : index++})
-    #   switch filePath
-    #     when gridDemoUri then creatGridDemo(uri: gridDemoUri)
+      originalPageId = filePath.substring(("atom://gridViewDemo").length)
+      transPageId = getObjectID(originalPageId)
+      # console.log originalPageId
+      creatGridDemo({uri: filePath, gridID : transPageId, pageID: originalPageId})
+            
   deactivate: ->
     @subscriptions?.dispose()
     @panel?.destroy()
