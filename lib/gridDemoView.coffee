@@ -8,14 +8,14 @@ module.exports =
 class Demo extends ScrollView
   @content : (params) ->
     @div class: 'baobiaoContainer pane-item native-key-bindings timecop', tabindex: -1, =>
-      @div id : 'leftContainer'+ params.gridID, class: 'leftContainer', =>
+      @div outlet : 'leftContainer', class: 'leftContainer', =>
         @div class: 'block',=>
-          @button  class: 'SplitScreenBtn btn btn-lg', id:'ASplitScreen' + params.gridID, '一分屏'
-          @button  class: 'SplitScreenBtn btn btn-lg', id: 'BinaryScreen'+ params.gridID, '二分屏'
-          @button  class: 'SplitScreenBtn btn btn-lg', id:'ThreeSplitScreen'+ params.gridID, '三分屏'
-          @button  class: 'SplitScreenBtn btn btn-lg', id: 'FourSplitScreen'+ params.gridID, '四分屏'
-        @div id : 'gridData'+ params.gridID, outlet:'gridData', =>
-      @div id : 'chartData'+ params.gridID, outlet: 'chartData', =>
+          @button  class: 'SplitScreenBtn btn btn-lg', outlet:'ASplitScreen' , '一分屏'
+          @button  class: 'SplitScreenBtn btn btn-lg', outlet: 'BinaryScreen', '二分屏'
+          @button  class: 'SplitScreenBtn btn btn-lg', outlet:'ThreeSplitScreen', '三分屏'
+          @button  class: 'SplitScreenBtn btn btn-lg', outlet: 'FourSplitScreen', '四分屏'
+        @div  outlet:'gridData', =>
+      @div outlet: 'chartData', =>
       #   @div id: 'gridOne'  + params.index, class: 'gridOne'
       # @div id: 'rizhi' + params.index, class: 'rizhi AttrItem'
       # @div id: 'DisUsageModel' + params.index, class: 'UsageModel AttrItem', =>
