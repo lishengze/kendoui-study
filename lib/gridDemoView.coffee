@@ -29,13 +29,13 @@ class Demo extends ScrollView
       #   @div id: 'TestUsage' + params.index, class: 'highstockChart'
   attached: ->
     {setup}=require './gridDemo.js'
-    {beginReceiveData}=require './gridDemo.js'
+    # {beginReceiveData}=require './gridDemo.js'
     setup(this)
     # beginReceiveData(@index)
 
   detached: ->
-    {stopReceiveData}=require './gridDemo.js'
-    stopReceiveData()
+    # {stopReceiveData}=require './gridDemo.js'
+    # stopReceiveData()
 
   initialize: ({@uri,@gridID,@pageID}) ->
     console.log @uri
