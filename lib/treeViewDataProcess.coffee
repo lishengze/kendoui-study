@@ -555,7 +555,7 @@ sortData = (data) ->
 # module.exports.setup = setup
 
 creatGridDemo = (state) ->
-  console.log 'creatGridDemo'
+  # console.log 'creatGridDemo'
 
   Demo = require('./gridDemoView.coffee')
   p = new Demo(state)
@@ -569,9 +569,9 @@ creatGridDemo = (state) ->
 #   change: function (e) {}
 # }).data('kendoTreeView')
 onSelect = (e) ->
-  console.log(e)
+  # console.log(e)
   dataItem = treeview.dataItem(e.node)
-  console.log dataItem.id
+  # console.log dataItem.id
   reqQryOidRelationData = new userApiStruct.CShfeFtdcReqQryOidRelationField()
   reqQryOidRelationData.ObjectID = dataItem.id
   reqQryOidRelationField = {}
@@ -591,7 +591,7 @@ onSelect = (e) ->
       if data.bIsLast == true
         gridID = getObjectID(data.pRspQryOidRelation.ObjectID)
         gridDataEventName = gridID
-        console.log "gridDataEventName: "+ gridDataEventName
+        # console.log "gridDataEventName: "+ gridDataEventName
 
         userApi.emitter.emit gridDataEventName, {'rspData':rspData, 'gridID':gridID}
 

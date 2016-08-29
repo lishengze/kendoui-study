@@ -31,6 +31,7 @@ class Demo extends ScrollView
     {setup}=require './gridDemo.js'
     # {beginReceiveData}=require './gridDemo.js'
     setup(this)
+    console.log atom.getCurrentWindow()
     # beginReceiveData(@index)
 
   detached: ->

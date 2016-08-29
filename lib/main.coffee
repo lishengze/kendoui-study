@@ -4,7 +4,6 @@ PanelView = require './panel-view.coffee'
 # gridDemoUri = 'atom://gridDemo'
 creatGridDemo = (state)->
   Demo = require './gridDemoView.coffee'
-  console.log state
   @p = new Demo(state)
   # @p.getTitle state.uri
   # @p
@@ -35,7 +34,7 @@ module.exports =
       transPageId = getObjectID(originalPageId)
       # console.log originalPageId
       creatGridDemo({uri: filePath, gridID : transPageId, pageID: originalPageId})
-            
+
   deactivate: ->
     @subscriptions?.dispose()
     @panel?.destroy()
