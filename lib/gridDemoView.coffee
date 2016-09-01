@@ -10,10 +10,10 @@ class Demo extends ScrollView
     @div class: 'baobiaoContainer pane-item native-key-bindings timecop', tabindex: -1, =>
       @div outlet : 'leftContainer', class: 'leftContainer', =>
         @div class: 'block',=>
-          @button  class: 'SplitScreenBtn btn btn-lg', outlet:'ASplitScreen' , '一分屏'
-          @button  class: 'SplitScreenBtn btn btn-lg', outlet: 'BinaryScreen', '二分屏'
-          @button  class: 'SplitScreenBtn btn btn-lg', outlet:'ThreeSplitScreen', '三分屏'
-          @button  class: 'SplitScreenBtn btn btn-lg', outlet: 'FourSplitScreen', '四分屏'
+          @button  class: 'ASplitScreen SplitScreenBtn btn btn-lg', outlet:'ASplitScreen' , '一分屏'
+          @button  class: 'BinaryScreen SplitScreenBtn btn btn-lg', outlet: 'BinaryScreen', '二分屏'
+          @button  class: 'ThreeSplitScreen SplitScreenBtn btn btn-lg', outlet:'ThreeSplitScreen', '三分屏'
+          @button  class: 'FourSplitScreen SplitScreenBtn FourSplitScreenBtn btn btn-lg', outlet: 'FourSplitScreen', '四分屏'
         @div  outlet:'gridData', =>
       @div outlet: 'chartData', =>
       #   @div id: 'gridOne'  + params.index, class: 'gridOne'
@@ -29,24 +29,48 @@ class Demo extends ScrollView
       #   @div id: 'TestUsage' + params.index, class: 'highstockChart'
   attached: ->
     {setup}=require './gridDemo.js'
+    # {nodePosition}=require './gridDemo.js'
     # {beginReceiveData}=require './gridDemo.js'
     setup(this)
-    console.log atom.getCurrentWindow()
-    # beginReceiveData(@index)
 
+    @windowResize()  # 全局的window resize 操作
+    # beginReceiveData(@index)
+    # $('.k-grid-toolbar').dblclick ->
+    #   #toolbar 双击操作
+    #   console.log 'dblclick'
+  windowResize: ->
+    {nodePosition}=require './gridDemo.js'
+    $(window).resize =>
+      gridSelector = $('.gridOne')
+      # console.log $('.FourSplitScreenBtn')
+      # console.log @ASplitScreen
+      # console.log @pageID
+      # console.log $(@pageID)
+    # 每次打开一个tab页，都会注册resize监听函数，当 window 大小重置时，所有页面都会执行resize操作
+    # 当执行resize操作时，要重新计算属性列表的长宽。而测试发现，非当前页面的FourSplitScreen button position值为 0
+    # 因此想到，执行非当前页面的属性列表长宽都 button 类 数组对象 中 position().left 最大的数据
+      btnSelector = $('.FourSplitScreenBtn')[0]
+      i = 1
+      while i < $('.FourSplitScreenBtn').length
+        if $(btnSelector).position().left < $($('.FourSplitScreenBtn')[i]).position().left
+          btnSelector = $('.FourSplitScreenBtn')[i]
+        i++
+      $(gridSelector).outerWidth $(btnSelector).position().left + $(btnSelector).outerWidth()
+      $(gridSelector).height window.innerHeight - ($(btnSelector).offset().top) - $(btnSelector).outerHeight() - 20
+      this.containerHeight = window.innerHeight - 50
+      this.containerLeft = $(btnSelector).position().left + $(btnSelector).outerWidth() + 5;
+      this.screenWidth = $('.baobiaoContainer').width() - this.containerLeft - 20
+      console.log this.bb
+      this.bb = 1
+
+      # console.log this.screenSelect
+      nodePosition(this)
   detached: ->
     # {stopReceiveData}=require './gridDemo.js'
     # stopReceiveData()
 
   initialize: ({@uri,@gridID,@pageID}) ->
-    console.log @uri
-    # view = new Demo
-    # view.find('div').append('<div class = "leftContainer"></div>')
-    # @addClass('leftContainer')
-    # alert 'haha'
-    # alert('summary is:'+@summary);
-    # alert('summary class is:'+@summary.attr('class'));
-    # alert('$ is:'+$('#d3Div').attr('cl
+
   serialize: ->
     deserializer: @constructor.name
     uri: @getURI()

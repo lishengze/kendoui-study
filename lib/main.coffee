@@ -1,6 +1,7 @@
 SidebarIconView = require './sidebarIcon-view'
 {CompositeDisposable} = require 'atom'
 PanelView = require './panel-view.coffee'
+window.displayItem = []
 # gridDemoUri = 'atom://gridDemo'
 creatGridDemo = (state)->
   Demo = require './gridDemoView.coffee'
@@ -28,6 +29,14 @@ module.exports =
     window.index = 0
     window.registerRtnObjectAttrTopic   = false;
     window.IsRspQryOidRelationTopicDone = false;
+
+    atom.workspace.onDidChangeActivePaneItem (item)->
+      ## 当关掉最后一个页面时，item值为 undefined 因此要加个判断
+      # console.log item
+      if item == undefined
+        return
+      window.displayItem = [];
+      window.displayItem[item.pageID] = true;
 
     atom.workspace.addOpener (filePath) ->
       originalPageId = filePath.substring(("atom://gridViewDemo").length)
