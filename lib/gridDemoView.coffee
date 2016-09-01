@@ -29,15 +29,45 @@ class Demo extends ScrollView
       #   @div id: 'TestUsage' + params.index, class: 'highstockChart'
   attached: ->
     {setup}=require './gridDemo.js'
-    # {nodePosition}=require './gridDemo.js'
-    # {beginReceiveData}=require './gridDemo.js'
     setup(this)
 
     @windowResize()  # 全局的window resize 操作
+    @eventProcess(this)
     # beginReceiveData(@index)
     # $('.k-grid-toolbar').dblclick ->
     #   #toolbar 双击操作
     #   console.log 'dblclick'
+  eventProcess :(gridViewPointer) ->
+    {resizeNode}=require './gridDemo.js'
+    nodeCurPosition = []
+    nodeWidth = 0
+    nodeHeight = 0
+    $('.baobiaoContainer').delegate '.k-grid-toolbar', 'dblclick', ->
+      #toolbar 双击操作
+      console.log gridViewPointer
+      console.log this
+      gridViewPointer.MaxMinClickedTimes++
+      # console.log('dblclick')
+      node = $(this).parent()
+      console.log node
+      resizeNode this, node, nodeCurPosition, nodeWidth, nodeHeight
+      return
+    document.onclick = (e) ->
+      #将鼠标点击的属性对象放置最上层
+      # $(e.target).parents('.AttrItem').css 'z-index', ++zIndex
+      return
+    $('.baobiaoContainer').delegate '.gridClose', 'click', ->
+      #关闭
+      console.log $(this).parent().parent()
+      node = $(this).parent().parent()
+      $(node).hide()
+      return
+    $('.baobiaoContainer').delegate '.gridMax', 'click' ,->
+      #放大缩小
+      gridViewPointer.MaxMinClickedTimes++
+      node = $(this).parent().parent()
+      resizeNode this, node, nodeCurPosition, nodeWidth, nodeHeight
+      return
   windowResize: ->
     {nodePosition}=require './gridDemo.js'
     $(window).resize =>
@@ -60,9 +90,7 @@ class Demo extends ScrollView
       this.containerHeight = window.innerHeight - 50
       this.containerLeft = $(btnSelector).position().left + $(btnSelector).outerWidth() + 5;
       this.screenWidth = $('.baobiaoContainer').width() - this.containerLeft - 20
-      console.log this.bb
-      this.bb = 1
-
+      # console.log this.gridID
       # console.log this.screenSelect
       nodePosition(this)
   detached: ->
