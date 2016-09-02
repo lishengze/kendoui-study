@@ -39,22 +39,17 @@ class Demo extends ScrollView
     #   console.log 'dblclick'
   eventProcess :(gridViewPointer) ->
     {resizeNode}=require './gridDemo.js'
-    nodeCurPosition = []
-    nodeWidth = 0
-    nodeHeight = 0
     $('.baobiaoContainer').delegate '.k-grid-toolbar', 'dblclick', ->
       #toolbar 双击操作
-      console.log gridViewPointer
-      console.log this
+      # console.log gridViewPointer.nodeWidth
+      # console.log gridViewPointer.nodeCurPosition
       gridViewPointer.MaxMinClickedTimes++
-      # console.log('dblclick')
       node = $(this).parent()
-      console.log node
-      resizeNode this, node, nodeCurPosition, nodeWidth, nodeHeight
+      resizeNode gridViewPointer, node
       return
     document.onclick = (e) ->
       #将鼠标点击的属性对象放置最上层
-      # $(e.target).parents('.AttrItem').css 'z-index', ++zIndex
+      $(e.target).parents('.AttrItem').css 'z-index', ++gridViewPointer.zIndex
       return
     $('.baobiaoContainer').delegate '.gridClose', 'click', ->
       #关闭
@@ -66,7 +61,7 @@ class Demo extends ScrollView
       #放大缩小
       gridViewPointer.MaxMinClickedTimes++
       node = $(this).parent().parent()
-      resizeNode this, node, nodeCurPosition, nodeWidth, nodeHeight
+      resizeNode gridViewPointer, node
       return
   windowResize: ->
     {nodePosition}=require './gridDemo.js'
