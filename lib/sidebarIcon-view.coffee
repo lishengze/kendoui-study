@@ -6,7 +6,7 @@ class SidebarIconView extends View
   @content: ->
     @div class: 'sidebarIcon monitor-treeview', =>
       @a outlet: 'anchor', =>
-        @span class: 'fa fa-list fa-3x', click: 'handleClick'
+        @span class: 'fa fa-list fa-2x', click: 'handleClick'
 
   initialize: (@panel) ->
     @subscriptions = new CompositeDisposable
