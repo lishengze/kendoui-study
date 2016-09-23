@@ -16,48 +16,32 @@ class Demo extends ScrollView
           @button  class: 'FourSplitScreen SplitScreenBtn FourSplitScreenBtn btn btn-lg', outlet: 'FourSplitScreen', '四分屏'
         @div  outlet:'gridData', =>
       @div outlet: 'chartData', =>
-      #   @div id: 'gridOne'  + params.index, class: 'gridOne'
-      # @div id: 'rizhi' + params.index, class: 'rizhi AttrItem'
-      # @div id: 'DisUsageModel' + params.index, class: 'UsageModel AttrItem', =>
-      #   @div id: 'DisUsageToolbar' + params.index, class: 'toolbar k-grid-toolbar'
-      #   @div id: 'DisUsage' + params.index, class: 'highstockChart'
-      # @div id: 'CPUUsageModel' + params.index, class: 'UsageModel AttrItem', =>
-      #   @div id: 'CPUUsageToolbar' + params.index, class: 'toolbar k-grid-toolbar'
-      #   @div id: 'CPUUsage' + params.index, class: 'highstockChart'
-      # @div id: 'TestUsageModel' + params.index, class: 'UsageModel AttrItem', =>
-      #   @div id: 'TestUsageToolbar' + params.index, class: 'toolbar k-grid-toolbar'
-      #   @div id: 'TestUsage' + params.index, class: 'highstockChart'
   attached: ->
     {setup}=require './gridDemo.js'
     setup(this)
-
     @windowResize()  # 全局的window resize 操作
     @eventProcess(this)
-    # beginReceiveData(@index)
-    # $('.k-grid-toolbar').dblclick ->
-    #   #toolbar 双击操作
-    #   console.log 'dblclick'
   eventProcess :(gridViewPointer) ->
     {resizeNode}=require './gridDemo.js'
-    $('.baobiaoContainer').delegate '.k-grid-toolbar', 'dblclick', ->
+     #事件操作， 每次对一个对象执行放大或者缩小时，
+     #都应该设其 zindex值为所有对象中的最大值
+     #由于不管是双击还是单击最大图标，都会调用click函数，所以，设置zindex的操作全部放在了click函数里
+    $(gridViewPointer).delegate '.k-grid-toolbar', 'dblclick', ->
       #toolbar 双击操作
-      # console.log gridViewPointer.nodeWidth
-      # console.log gridViewPointer.nodeCurPosition
       gridViewPointer.MaxMinClickedTimes++
       node = $(this).parent()
       resizeNode gridViewPointer, node
       return
-    document.onclick = (e) ->
+    $(gridViewPointer).click (e) ->
       #将鼠标点击的属性对象放置最上层
       $(e.target).parents('.AttrItem').css 'z-index', ++gridViewPointer.zIndex
       return
-    $('.baobiaoContainer').delegate '.gridClose', 'click', ->
+    $(gridViewPointer).delegate '.gridClose', 'click', ->
       #关闭
-      console.log $(this).parent().parent()
       node = $(this).parent().parent()
       $(node).hide()
       return
-    $('.baobiaoContainer').delegate '.gridMax', 'click' ,->
+    $(gridViewPointer).delegate '.gridMax', 'click' ,->
       #放大缩小
       gridViewPointer.MaxMinClickedTimes++
       node = $(this).parent().parent()
@@ -80,6 +64,7 @@ class Demo extends ScrollView
         if $(btnSelector).position().left < $($('.FourSplitScreenBtn')[i]).position().left
           btnSelector = $('.FourSplitScreenBtn')[i]
         i++
+      this.MaxMinClickedTimes = 0
       $(gridSelector).outerWidth $(btnSelector).position().left + $(btnSelector).outerWidth()
       $(gridSelector).height window.innerHeight - ($(btnSelector).offset().top) - $(btnSelector).outerHeight() - 20
       this.containerHeight = window.innerHeight - 50
@@ -87,7 +72,7 @@ class Demo extends ScrollView
       this.screenWidth = $('.baobiaoContainer').width() - this.containerLeft - 20
       # console.log this.gridID
       # console.log this.screenSelect
-      nodePosition(this)
+      nodePosition(this, true)
   detached: ->
     # {stopReceiveData}=require './gridDemo.js'
     # stopReceiveData()
