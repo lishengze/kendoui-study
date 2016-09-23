@@ -64,7 +64,7 @@ class Demo extends ScrollView
         if $(btnSelector).position().left < $($('.FourSplitScreenBtn')[i]).position().left
           btnSelector = $('.FourSplitScreenBtn')[i]
         i++
-      this.MaxMinClickedTimes = 0
+      this.MaxMinClickedTimes = 0 ##若resize则将计数器设为 0
       $(gridSelector).outerWidth $(btnSelector).position().left + $(btnSelector).outerWidth()
       $(gridSelector).height window.innerHeight - ($(btnSelector).offset().top) - $(btnSelector).outerHeight() - 20
       this.containerHeight = window.innerHeight - 50
