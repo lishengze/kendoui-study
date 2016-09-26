@@ -21,11 +21,12 @@ class Demo extends ScrollView
     setup(this)
     @windowResize()  # 全局的window resize 操作
     @eventProcess(this)
+    @SplitScreen(this)
   eventProcess :(gridViewPointer) ->
-    {resizeNode}=require './gridDemo.js'
      #事件操作， 每次对一个对象执行放大或者缩小时，
      #都应该设其 zindex值为所有对象中的最大值
      #由于不管是双击还是单击最大图标，都会调用click函数，所以，设置zindex的操作全部放在了click函数里
+    {resizeNode}=require './gridDemo.js'
     $(gridViewPointer).delegate '.k-grid-toolbar', 'dblclick', ->
       #toolbar 双击操作
       gridViewPointer.MaxMinClickedTimes++
@@ -51,10 +52,6 @@ class Demo extends ScrollView
     {nodePosition}=require './gridDemo.js'
     $(window).resize =>
       gridSelector = $('.gridOne')
-      # console.log $('.FourSplitScreenBtn')
-      # console.log @ASplitScreen
-      # console.log @pageID
-      # console.log $(@pageID)
     # 每次打开一个tab页，都会注册resize监听函数，当 window 大小重置时，所有页面都会执行resize操作
     # 当执行resize操作时，要重新计算属性列表的长宽。而测试发现，非当前页面的FourSplitScreen button position值为 0
     # 因此想到，执行非当前页面的属性列表长宽都 button 类 数组对象 中 position().left 最大的数据
@@ -73,6 +70,27 @@ class Demo extends ScrollView
       # console.log this.gridID
       # console.log this.screenSelect
       nodePosition(this, true)
+  SplitScreen:(gridViewPointer) ->
+    {nodePosition}=require './gridDemo.js'
+    $(gridViewPointer.ASplitScreen).click (e) ->
+      console.log gridViewPointer.gridID
+      gridViewPointer.screenSelect = 1
+      nodePosition gridViewPointer, false
+      return
+    $(gridViewPointer.BinaryScreen).click (e) ->
+      console.log gridViewPointer.gridID
+      gridViewPointer.screenSelect = 2
+      nodePosition gridViewPointer, false
+      return
+    $(gridViewPointer.ThreeSplitScreen).click (e) ->
+      gridViewPointer.screenSelect = 3
+      nodePosition gridViewPointer, false
+      return
+    $(gridViewPointer.FourSplitScreen).click (e) ->
+      console.log gridViewPointer.gridID
+      gridViewPointer.screenSelect = 4
+      nodePosition gridViewPointer, false
+      return
   detached: ->
     # {stopReceiveData}=require './gridDemo.js'
     # stopReceiveData()
