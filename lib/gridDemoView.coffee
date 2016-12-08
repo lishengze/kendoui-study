@@ -10,10 +10,10 @@ class Demo extends ScrollView
     @div class: 'baobiaoContainer pane-item native-key-bindings timecop', tabindex: -1, =>
       @div outlet : 'leftContainer', class: 'leftContainer', =>
         @div class: 'block',=>
-          @button  class: 'ASplitScreen SplitScreenBtn btn btn-lg', outlet:'ASplitScreen' , '一分屏'
-          @button  class: 'BinaryScreen SplitScreenBtn btn btn-lg', outlet: 'BinaryScreen', '二分屏'
-          @button  class: 'ThreeSplitScreen SplitScreenBtn btn btn-lg', outlet:'ThreeSplitScreen', '三分屏'
-          @button  class: 'FourSplitScreen SplitScreenBtn FourSplitScreenBtn btn btn-lg', outlet: 'FourSplitScreen', '四分屏'
+          @button  class: 'ASplitScreen SplitScreenBtn btn btn-lg general-font', outlet:'ASplitScreen' , '一分屏'
+          @button  class: 'BinaryScreen SplitScreenBtn btn btn-lg general-font', outlet: 'BinaryScreen', '二分屏'
+          @button  class: 'ThreeSplitScreen SplitScreenBtn btn btn-lg general-font', outlet:'ThreeSplitScreen', '三分屏'
+          @button  class: 'FourSplitScreen SplitScreenBtn FourSplitScreenBtn btn btn-lg general-font', outlet: 'FourSplitScreen', '四分屏'
         @div  outlet:'gridData', =>
       @div outlet: 'chartData', =>
   attached: ->
@@ -62,11 +62,13 @@ class Demo extends ScrollView
           btnSelector = $('.FourSplitScreenBtn')[i]
         i++
       this.MaxMinClickedTimes = 0 ##若resize则将计数器设为 0
-      $(gridSelector).outerWidth $(btnSelector).position().left + $(btnSelector).outerWidth()
-      $(gridSelector).height window.innerHeight - ($(btnSelector).offset().top) - $(btnSelector).outerHeight() - 20
-      this.containerHeight = window.innerHeight - 50
-      this.containerLeft = $(btnSelector).position().left + $(btnSelector).outerWidth() + 5;
-      this.screenWidth = $('.baobiaoContainer').width() - this.containerLeft - 20
+      console.log $(btnSelector).position()
+      if $(btnSelector).position() != undefined
+        $(gridSelector).outerWidth $(btnSelector).position().left + $(btnSelector).outerWidth()
+        $(gridSelector).height window.innerHeight - ($(btnSelector).offset().top) - $(btnSelector).outerHeight() - 20
+        this.containerHeight = window.innerHeight - 50
+        this.containerLeft = $(btnSelector).position().left + $(btnSelector).outerWidth() + 5;
+        this.screenWidth = $('.baobiaoContainer').width() - this.containerLeft - 20
       # console.log this.gridID
       # console.log this.screenSelect
       nodePosition(this, true)

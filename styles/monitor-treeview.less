@@ -22,6 +22,13 @@
   }
 }
 .gridOne {
+   // grid表格只保留水平方向的 滚动条。
+  .k-grid-header{
+     padding: 0 !important;
+  }
+  .k-grid-content {
+     overflow-y: visible;
+  }
   position: absolute;
   // width :300px;
   // resize:both;
@@ -84,7 +91,9 @@
 //   }
 //   .generate-loop-css(@n, (@i + 1));
 // }
-
+.warning {
+  color:red;
+}
 .gridClose {
   color: white;
   position:absolute;
@@ -97,4 +106,7 @@
 }
 .k-grid-toolbar {
   background-color:#aaaaaa;
+}
+.general-font, .TreeviewClass{
+  font-family: "\6977\4F53"// unicode 编码
 }

@@ -20,9 +20,8 @@ module.exports =
   consumeSidebar: (@sidebar) ->
     @panelView = new PanelView() #左侧 package内容栏
     @panel = atom.workspace.addLeftPanel(item: @panelView, visible: false)
-    @sidebarIconView = new SidebarIconView(@panel)
-    @sidebarTile = @sidebar.addTile(item: @sidebarIconView, priority: 1)
-
+    @sidebarIconView = new SidebarIconView(@panel) # 带有图表的模块
+    @sidebarTile = @sidebar.addTile(item: @sidebarIconView, priority: 1) # 将带有图表的模块放入左侧sidebar中
 
   activate: (state) ->
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable

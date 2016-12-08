@@ -1,64 +1,8 @@
- ##treeview 节点数据转化处理模块。
-
-# var setup = function () {
-# var html = '<div>\
-#        <div><button class="k-button" id="collapseAllNodes">Collapse</button>\
-#         <button class="k-button" id="addUpdate">增 量 更 新</button></div>\
-#        <label style = "font-weight:bold" for=\'search-term\'>Search : </label>\
-#        <input type=text id = \'search-term\' placeholder = \'I am looking for...\'/></div>\
-#        <ul id="menu">\
-#        <li id="rename"><i class="fa fa-coffee"></i> Rename</li>\
-#   <li id="delete"><i class="fa fa-times"></i>  Delete</li>\
-#   </ul>'
-# $('.filterText').append(html)
-# $('.MonitorObjectListPanel').css('min-width', '200px')// 设置treeview窗口的最小宽度
-# var divHeight = 90
-# var windowHeight = window.innerHeight
-# var actHeight = windowHeight - divHeight - 40
-# $('#MonitorObjectListPanel-Treeview').height(actHeight)// 设置treeview窗口的高度
-# $(window).resize(function() {// 根据窗口大小自动调整treeview窗口高度
-#  //process here
-#   windowHeight = window.innerHeight
-#   divHeight = $('#BeforeTreeview').height()
-#   var resizeHeight = windowHeight - divHeight - 40
-#   $( '#MonitorObjectListPanel-Treeview').height(resizeHeight)// 设置treeview窗口的高度
-# });
-# }
-#///////////////////////////////////////////////////////////这些代码为了实现横向滚动条位置跟随treeview高度变化////////////////////////
-# function adjustSize() {
-#   var windowHeight = window.innerHeight
-#   var treeviewHeight = $('#MonitorObjectListPanel-Treeview .k-treeview-lines').height() // 获取treeview的实际高度
-# //  console.log('treeviewHeight : ' + treeviewHeight)
-# //  console.log($('.k-treeview-lines'))
-#    divHeight = $('#BeforeTreeview').height()
-#   // console.log(divHeight )
-#   var resizeHeight = windowHeight > treeviewHeight ? treeviewHeight : windowHeight - divHeight -20
-#   $('.tree-view-scroller').height(resizeHeight)// 设置treeview窗口的高度
-# }
-# $(window).resize(function() {
-#    adjustSize()
-# })
-# $('#MonitorObjectListPanel-Treeview .k-treeview-lines').resize(function() {// 根据窗口大小自动调整treeview窗口高度
-#  //process here
-#  adjustSize()
-#  // console.log('resize')
-#   // var windowHeight = window.innerHeight
-#   // var treeviewHeight = $('#MonitorObjectListPanel-Treeview .k-treeview-lines').height()
-#   // console.log('treeviewHeight : ' + treeviewHeight)
-#   // console.log($('.k-treeview-lines'))
-#   // // divHeight = $('#BeforeTreeview').height()
-#   // // console.log(divHeight )
-#   // var resizeHeight = windowHeight - divHeight -20
-#   // $('.tree-view-scroller').height(resizeHeight)// 设置treeview窗口的高度
-# });
-#///////////////////////////////////////////////////////////以上代码///////////////////////
-
-
 treeview = null; #全局 treeview
 beginReceiveData = (@TreeviewList, @menu)->
   treeViewNode = @TreeviewList
   treeview = $(treeViewNode).kendoTreeView(
-    template: '<i class=\'#= item.FrontAwesomeClass #\' id=\'#=item.id#\'></i>#=  item.text #'
+    template: '<i class=\'#= item.FrontAwesomeClass #\' id=\'#=item.id#\'></i><span class = "general-font">#=  item.text #</span>'
     dragAndDrop: true
     animation: false
     loadOnDemand: false
@@ -484,6 +428,14 @@ treeSelect = (e) ->
       renameNode e.target
     when 'delete'
       treeview.remove e.target
+    when 'cancelMessage'
+      # console.log e
+      # console.log e.target
+      $(e.target).find('i').addClass('warning')
+      $(e.target).parents().find('i').addClass('warning')
+    when 'activeMessage'
+      $(e.target).find('i').parents().find('i').removeClass('warning')
+      console.log 'active message'
   return
 
 renameNode = (nodeJquery) ->

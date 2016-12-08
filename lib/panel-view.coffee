@@ -10,11 +10,11 @@ class PanelView extends ScrollView
     @div class:'MonitorObjectListPanel',=>
       @div class: 'tree-view-resizer pane-item native-key-bindings', outlet:'TreeviewPanel', =>
         @div id:'BeforeTreeview',  outlet:'BeforeTreeview',=>
-          @h2  '监控对象列表', id:'title'
+          @h2  '监控对象列表', id:'title',class : 'general-font'
           @div class:"filterText", =>
             @div class: 'block',=>
-              @button  class: 'btn', id:'collapseAllNodes', '折叠所有节点'
-              @button  class: 'btn', id: 'addUpdate', '增 量 更 新'
+              @button  class: 'btn general-font', id:'collapseAllNodes', '折叠所有节点'
+              @button  class: 'btn general-font', id: 'addUpdate', '增 量 更 新'
             @label style:'font-weight:bold', for:'search-term', 'Search :'
             @input type:'text', id:'search-term', placeholder:'I am looking for...'
         @div id: 'MonitorObjectListPanel-Treeview', class: 'TreeviewClass tree-view-scroller', outlet:'TreeviewList'
@@ -24,6 +24,10 @@ class PanelView extends ScrollView
             @i class: 'fa fa-coffee', 'Rename'
           @li id:'delete', =>
             @i class: 'fa fa-times', 'Delete'
+          @li id:'activeMessage', =>
+            @i class: 'fa fa-times', '激活告警通知'
+          @li id:'cancelMessage', =>
+            @i class: 'fa fa-times', '取消告警通知'
   attached: ->
     @setTreeviewHeight()
     {beginReceiveData} = require './treeViewDataProcess.coffee'
