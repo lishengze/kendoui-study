@@ -1,11 +1,11 @@
 # treeview 显示模块
-
 _ = require 'underscore-plus'
 {Disposable} = require 'atom'
 {ScrollView} = require 'atom-space-pen-views'
 $=require('atom-space-pen-views').$
+
 module.exports =
-class PanelView extends ScrollView
+class TreeView extends ScrollView
   @content: ->
     @div class:'MonitorObjectListPanel',=>
       @div class: 'tree-view-resizer pane-item native-key-bindings', outlet:'TreeviewPanel', =>
@@ -30,8 +30,8 @@ class PanelView extends ScrollView
             @i class: 'fa fa-times', '取消告警通知'
   attached: ->
     @setTreeviewHeight()
-    {beginReceiveData} = require './treeViewDataProcess.coffee'
-    beginReceiveData(@TreeviewList, @menu)
+    {setTreeViewData} = require './treeViewDataProcess.coffee'
+    setTreeViewData(@TreeviewList, @menu)
 
   setTreeviewHeight: ->
     $('.MonitorObjectListPanel').css 'min-width','200px' # 设置treeview窗口的最小宽度
@@ -46,16 +46,12 @@ class PanelView extends ScrollView
       windowHeight = window.innerHeight
       divHeight = $(@BeforeTreeview).height()
       resizeHeight = windowHeight - divHeight - 40
-      # console.log 'resizeHeight: ' + resizeHeight
       @TreeviewList.height resizeHeight # 设置treeview窗口的高度
-      # console.log @TreeviewList
 
   detached: ->
-    {stopReceiveData}=require './setup.js'
-    #stopReceiveData()
 
   initialize: (state) ->
-    # console.log "initialize function has been called"
+
     @handleEvents()
 
   handleEvents: ->

@@ -1,38 +1,35 @@
-SidebarIconView = require './sidebarIcon-view'
+SidebarIconView = require './sidebarIconView'
 {CompositeDisposable} = require 'atom'
-PanelView = require './panel-view.coffee'
-{RefreshChart} = require './refreshChart.js'
+TreeView = require './treeView.coffee'
+{refreshChart} = require './refreshChart.js'
 window.displayItem = []
 # gridDemoUri = 'atom://gridDemo'
-creatGridDemo = (state)->
-  Demo = require './gridDemoView.coffee'
+creatGridChartView = (state)->
+  Demo = require './gridChartView.coffee'
   @p = new Demo(state)
-  # @p.getTitle state.uri
-  # @p
+
 window.getObjectID = (originalString) ->
   stringArray = originalString.split(".")
-  transString = ""
+  transString = "",
   for value in stringArray
     transString += value
   return transString
 
 module.exports =
   consumeSidebar: (@sidebar) ->
-    @panelView = new PanelView() #左侧 package内容栏
-    @panel = atom.workspace.addLeftPanel(item: @panelView, visible: false)
+    @TreeView = new TreeView() #左侧 package内容栏
+    @panel = atom.workspace.addLeftPanel(item: @TreeView, visible: false)
     @sidebarIconView = new SidebarIconView(@panel) # 带有图表的模块
     @sidebarTile = @sidebar.addTile(item: @sidebarIconView, priority: 1) # 将带有图表的模块放入左侧sidebar中
 
   activate: (state) ->
-    # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
-    RefreshChart();
+    refreshChart();
     window.index = 0
     window.registerRtnObjectAttrTopic   = false;
     window.IsRspQryOidRelationTopicDone = false;
 
     atom.workspace.onDidChangeActivePaneItem (item)->
-      ## 当关掉最后一个页面时，item值为 undefined 因此要加个判断
       # console.log item
       if item == undefined
         return
@@ -43,7 +40,7 @@ module.exports =
       originalPageId = filePath.substring(("atom://gridViewDemo").length)
       transPageId = getObjectID(originalPageId)
       # console.log originalPageId
-      creatGridDemo({uri: filePath, gridID : transPageId, pageID: originalPageId})
+      creatGridChartView({uri: filePath, gridID : transPageId, pageID: originalPageId})
 
   deactivate: ->
     @subscriptions?.dispose()

@@ -1,76 +1,69 @@
-treeview = null; #全局 treeview
-beginReceiveData = (@TreeviewList, @menu)->
-  treeViewNode = @TreeviewList
-  treeview = $(treeViewNode).kendoTreeView(
-    template: '<i class=\'#= item.FrontAwesomeClass #\' id=\'#=item.id#\'></i><span class = "general-font">#=  item.text #</span>'
-    dragAndDrop: true
-    animation: false
-    loadOnDemand: false
-    select: onSelect
-    change: (e) ->
-  ).data('kendoTreeView')
+# @fileoverview:
+#     设置TreeView的数据源，并注册打开gridView对应Panel的接口。
+#     文件输出的api是setTreeViewData,其余的函数都附属于这个函数。
+# @author:
+#     创建: 李献魁
+#     修改: 李晟泽  2016.12.07; 
 
-  console.log 'begin receive data'
-  MenuNode = @menu
-  $(MenuNode).kendoContextMenu
-    target: treeViewNode
-    filter: '.k-in'
-    select: treeSelect
 
-  reqMonitorObjectTopicData = new userApiStruct.CShfeFtdcReqQryMonitorObjectField()
-  ReqQryMonitorObjectTopicField = {}
-  ReqQryMonitorObjectTopicField.reqObject = reqMonitorObjectTopicData
-  ReqQryMonitorObjectTopicField.RequestId = ++ window.ReqQryMonitorObjectTopicRequestID
-  ReqQryMonitorObjectTopicField.rspMessage =  EVENTS.RspQryMonitorObjectTopic + ReqQryMonitorObjectTopicField.RequestId
+# g_MonConfigInfo： 存储treeview, grid 属性指标数字字符串映射表, 将其挂载到window对象上。
+# g_treeView: TreeView的引用对象，为了方便其他函数使用，将其设置为当前页面全局对象。
+var g_treeView = null; 
+window.g_MonConfigInfo = [];
+g_MonConfigInfo["ObjectIDNS"] = "";
+g_MonConfigInfo["DomainNS"] = "";
+g_MonConfigInfo["DomainNS"] = ""; 
 
-  netMonitorAttrerScope               = new userApiStruct.CShfeFtdcReqQryNetMonitorAttrScopeField()
-  netMonitorAttrerScope.OperationType = 0;
-  netMonitorAttrerScope.ID            = 0;
-  netMonitorAttrerScope.CName         = " ";
-  netMonitorAttrerScope.EName         = " ";
-  netMonitorAttrerScope.Comments      = " ";
+setTreeViewBasicPro = (@TreeviewList, @menu) ->
+    treeViewNode = @TreeviewList
+    g_treeView = $(treeViewNode).kendoTreeView(
+      template: '<i class=\'#= item.FrontAwesomeClass #\' id=\'#=item.id#\'></i><span class = "general-font">#=  item.text #</span>'
+      dragAndDrop: true
+      animation: true
+      loadOnDemand: false
+      select: onSelect
+    ).data('kendoTreeView')
 
-  netMonitorAttrerScopeField4            = {}
-  netMonitorAttrerScopeField4.reqObject  = netMonitorAttrerScope
-  netMonitorAttrerScopeField4.RequestId  = ++window.ReqQryNetMonitorAttrScopeTopicRequestID;
-  netMonitorAttrerScopeField4.rspMessage = EVENTS.RspQryNetMonitorAttrScopeTopic + netMonitorAttrerScopeField4.RequestId
+    MenuNode = @menu
+    $(MenuNode).kendoContextMenu
+      target: treeViewNode
+      filter: '.k-in'
+      select: treeSelect
 
+# setTreeViewData
+# 功能: 设置treeView的组件内容;
+# 实现: 先设置TreeView的组件属性，接着向后台请求数据;
+#      然后对数据进行处理使其满足treeView插件的格式，最后将数据赋予treeView。
+# @param {outlet} TreeviewList，指向页面上的TreeView元素段落节点，设置TreeView的句柄。
+# @param {outlet} menu, 指向页面上的menu元素标签，设置menu的句柄。
+# @return {null}。
+setTreeViewData = (@TreeviewList, @menu)->
+  initializeGlobaData();
+
+  setTreeViewBasicPro(@TreeviewList, @menu);
+
+  monitor2ObjectInfo  = new SysUserApiStruct.CShfeFtdcReqQryMonitor2ObjectField();
+  ReqQryMonitor2ObjectTopicRequestID = 0;
+  monitor2ObjectField       = {}
+  monitor2ObjectField.reqObject = monitor2ObjectInfo
+  monitor2ObjectField.RequestId = ++window.ReqQryMonitor2ObjectTopicRequestID;
+  monitor2ObjectField.message   = EVENTS.RspQryMonitor2ObjectTopic + monitor2ObjectField.RequestId
+
+  treeViewMapData = [];
   userApi.emitter.on EVENTS.RspQyrUserLoginSucceed, (data) =>
-    # console.log 'Login in'
-    userApi.emitter.emit EVENTS.ReqQryMonitorObjectTopic, ReqQryMonitorObjectTopicField
+    # console.log EVENTS.RspQyrUserLoginSucceed
+    userApi.emitter.emit EVENTS.ReqQryMonitor2ObjectTopic, monitor2ObjectField
 
-    userApi.emitter.emit EVENTS.ReqQryNetMonitorAttrScopeTopic, netMonitorAttrerScopeField4
+  orginalTreeViewData = []  
+  userApi.emitter.on monitor2ObjectField.message, (data) ->
+    orginalTreeViewData.push data.pRspQryMonitor2Object
 
-    userApi.emitter.on netMonitorAttrerScopeField4.rspMessage, (data) =>
-      # console.log netMonitorAttrerScopeField4.rspMessage
-      # console.log data
-
-  treeviewData1 = []  # 后台传递的原始数据
-  userApi.emitter.on ReqQryMonitorObjectTopicField.rspMessage, (data) ->
-    treeviewData1.push data.pRspQryMonitorObject
-    if data.bIsLast == true #所有数据传输
-      treeviewData = arrayConverseToJson(treeviewData1)
+    if data.bIsLast == true 
+      treeviewData = arrayConverseToJson(orginalTreeViewData)
       sortData treeviewData
-      # 对treeview节点按名字进行排序
-      treeview.setDataSource new (kendo.data.HierarchicalDataSource)(data: treeviewData)
-    #        var dataSource=treeview.dataSource
-    #
-    #        dataSource.add({
-    #            "text": "testData",
-    #            curID: "test"
-    #        })
-    # //////用于测试节点图标状态改变
-    # var time = 0
-    # var dataItem = treeview.dataSource.data()[0] // 获取第一组数据的根节点
-    # setInterval(function () {
-    #     time ++
-    #     if (time%2 === 0) {
-    #       dataItem.set("FrontAwesomeClass", WarningType(1))
-    #     } else {
-    #       dataItem.set("FrontAwesomeClass", WarningType(0))
-    #     }
-    # },2000)
+      g_treeView.setDataSource new (kendo.data.HierarchicalDataSource)(data: treeviewData)
     return
+  
   arrayLeft = 0
   # 所检索到的text剩余个数
   inputValue = ''
@@ -118,9 +111,9 @@ beginReceiveData = (@TreeviewList, @menu)->
         if q > 0
           html += text.substring(q)
           $(this).html html
-          # treeview.expand($(this))
-          $(this).parentsUntil('.k-treeview', '.k-item').each (index, element) ->
-            treeview.expand $(this)
+          # g_treeView.expand($(this))
+          $(this).parentsUntil('.k-g_treeView', '.k-item').each (index, element) ->
+            g_treeView.expand $(this)
             # 展开所有符合的元素
             $(this).data 'search', term
             # 把term数据添加到 this元素中，标记该数据符合要求
@@ -133,13 +126,13 @@ beginReceiveData = (@TreeviewList, @menu)->
       if searchArray.length == 0
         return
       # 节点中没有查询的内容
-      $('html, body, .k-treeview').animate { scrollTop: searchArray[0].offsetTop }, 0
+      $('html, body, .k-g_treeView').animate { scrollTop: searchArray[0].offsetTop }, 0
       # 0表示滚动的时间，默认为400
-      treeview.select $(searchArray[0])
+      g_treeView.select $(searchArray[0])
       arrayLeft = searchArray.length - 1
-      # $('#treeview .k-item').each(function() {
+      # $('#g_treeView .k-item').each(function() {
       # if ($(this).data('search') != term) { //选出不符合要求的元毒
-      # treeview.collapse($(this)); // 折叠所有不符合的元素
+      # g_treeView.collapse($(this)); // 折叠所有不符合的元素
       # }
       # })
     else if keyCode == 13 and $.trim($(this).val()) == inputValue and searchArray.length > 1
@@ -148,8 +141,8 @@ beginReceiveData = (@TreeviewList, @menu)->
         # 这个是为了解决查找过程中折叠或者展开了某个节点时继续查找时出错的问题
         if $(this).data('search') == term
           # 如果某个节点被标记过，将其展开
-          $(this).parentsUntil('.k-treeview', '.k-item').each (index, element) ->
-            treeview.expand $(this)
+          $(this).parentsUntil('.k-g_treeView', '.k-item').each (index, element) ->
+            g_treeView.expand $(this)
             # 展开所有符合的元素
             return
         return
@@ -160,8 +153,8 @@ beginReceiveData = (@TreeviewList, @menu)->
         itemScrollTop += parentOffsetTop
         parentNode = parentNode.offsetParent
         parentOffsetTop = parentNode.offsetTop
-      treeview.select $(searchArray[searchArray.length - arrayLeft])
-      $('html, body, .k-treeview').animate { scrollTop: itemScrollTop - ($('.tree-view-resizer').height() * 0.25) }, 0
+      g_treeView.select $(searchArray[searchArray.length - arrayLeft])
+      $('html, body, .k-g_treeView').animate { scrollTop: itemScrollTop - ($('.tree-view-resizer').height() * 0.25) }, 0
       # 0表示滚动的时间，默认为400
       arrayLeft--
       if arrayLeft == 0
@@ -169,30 +162,30 @@ beginReceiveData = (@TreeviewList, @menu)->
     else
     return
   $('#collapseAllNodes').click ->
-    treeview.collapse '.k-item'
+    g_treeView.collapse '.k-item'
     return
 
   removeNode = (text) ->
-    foo = treeview.findByText(text)
+    foo = g_treeView.findByText(text)
     if foo.length != 0
       # 如果找到该text
       i = 0
       while i < foo.length
         # 在查找到的每一个节点后都插入data
-        treeview.remove $(foo[i])
+        g_treeView.remove $(foo[i])
         # the second param : referenceNode jQuery
         i++
     return
 
   updateNode = (data, text) ->
-    foo = treeview.findByText(text)
+    foo = g_treeView.findByText(text)
     # return jquery nodes
     if foo.length != 0
       # 如果找到该text
       i = 0
       while i < foo.length
         # 在查找到的每一个节点后都更新其值
-        fooNode = treeview.dataItem(foo[i])
+        fooNode = g_treeView.dataItem(foo[i])
         console.log 'updata here'
         fooNode.set 'text', data.text
         fooNode.set 'FrontAwesomeClass', data.FrontAwesomeClass
@@ -201,7 +194,7 @@ beginReceiveData = (@TreeviewList, @menu)->
     return
 
   insertNode = (data, text, bool) ->
-    foo = treeview.findByText(text)
+    foo = g_treeView.findByText(text)
     # return jquery nodes
     if foo.length != 0
       # 如果找到该text
@@ -209,14 +202,14 @@ beginReceiveData = (@TreeviewList, @menu)->
       while i < foo.length
         # 在查找到的每一个节点后都插入data
         if bool == true
-          treeview.insertBefore data, $(foo[i])
+          g_treeView.insertBefore data, $(foo[i])
           # the second param : referenceNode jQuery
         else
-          treeview.insertAfter data, $(foo[i])
+          g_treeView.insertAfter data, $(foo[i])
         i++
     else
       # 如果查找不到节点text，则直接插到数组末尾
-      dataSource = treeview.dataSource
+      dataSource = g_treeView.dataSource
       dataSource.pushCreate data
     return
 
@@ -418,8 +411,8 @@ treeSelect = (e) ->
   # e.item : the selected item
   # e.type : type is "select"
   # e.target : the current target of the contentmenu - the current element
-  # var dataItem = treeview.dataItem(e.target);//dataItem 获取该节点信息，返回的数据格式为kendo.data.Node
-  # console.log(treeview.dataItem(e.target))
+  # var dataItem = g_treeView.dataItem(e.target);//dataItem 获取该节点信息，返回的数据格式为kendo.data.Node
+  # console.log(g_treeView.dataItem(e.target))
   if typeof e != 'object'
     return
   switch e.item.id
@@ -427,7 +420,7 @@ treeSelect = (e) ->
       console.log 'rename'
       renameNode e.target
     when 'delete'
-      treeview.remove e.target
+      g_treeView.remove e.target
     when 'cancelMessage'
       # console.log e
       # console.log e.target
@@ -443,7 +436,7 @@ renameNode = (nodeJquery) ->
   para = document.createElement('input')
   # Create a <input> element
   para.classList.add 'native-key-bindings'
-  node = treeview.dataItem(nodeJquery)
+  node = g_treeView.dataItem(nodeJquery)
   newId = 'newName'
   para.id = newId
   para.autofocus = true
@@ -504,25 +497,11 @@ sortData = (data) ->
     i++
   return
 
-# module.exports.setup = setup
 
-creatGridDemo = (state) ->
-  # console.log 'creatGridDemo'
 
-  Demo = require('./gridDemoView.coffee')
-  p = new Demo(state)
-  # p.getTitle()
-# var treeview = $('#MonitorObjectListPanel-Treeview').kendoTreeView({
-#   template: "<i class='#= item.FrontAwesomeClass #'></i>#=  item.text #", // 格式很重要~
-#   dragAndDrop: true,
-#   animation: false,
-#   loadOnDemand: false, // 默认为true
-#   select: onSelect,
-#   change: function (e) {}
-# }).data('kendoTreeView')
 onSelect = (e) ->
   # console.log(e)
-  dataItem = treeview.dataItem(e.node)
+  dataItem = g_treeView.dataItem(e.node)
   # console.log dataItem.id
   reqQryOidRelationData = new userApiStruct.CShfeFtdcReqQryOidRelationField()
   reqQryOidRelationData.ObjectID = dataItem.id
@@ -555,7 +534,4 @@ onSelect = (e) ->
 
   return
 
-module.exports.beginReceiveData = beginReceiveData
-
-# ---
-# generated by js2coffee 2.2.0
+module.exports.setTreeViewData = setTreeViewData
