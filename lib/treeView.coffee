@@ -3,6 +3,7 @@ _ = require 'underscore-plus'
 {Disposable} = require 'atom'
 {ScrollView} = require 'atom-space-pen-views'
 $=require('atom-space-pen-views').$
+{setTreeViewData} = require './treeViewDataProcess.js'
 
 module.exports =
 class TreeView extends ScrollView
@@ -29,9 +30,10 @@ class TreeView extends ScrollView
           @li id:'cancelMessage', =>
             @i class: 'fa fa-times', '取消告警通知'
   attached: ->
-    @setTreeviewHeight()
-    {setTreeViewData} = require './treeViewDataProcess.coffee'
+    
     setTreeViewData(@TreeviewList, @menu)
+    
+    @setTreeviewHeight()
 
   setTreeviewHeight: ->
     $('.MonitorObjectListPanel').css 'min-width','200px' # 设置treeview窗口的最小宽度
@@ -50,7 +52,7 @@ class TreeView extends ScrollView
 
   detached: ->
 
-  initialize: (state) ->
+  initialize: () ->
 
     @handleEvents()
 

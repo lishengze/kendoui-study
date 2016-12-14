@@ -20,7 +20,7 @@ class Demo extends ScrollView
           @button  class: 'FourSplitScreen SplitScreenBtn FourSplitScreenBtn btn btn-lg general-font', outlet: 'FourSplitScreen', '四分屏'
         @div  outlet:'gridData', =>
       @div outlet: 'chartData', =>
-  attached: ->    
+  attached: ->        
     setup(this)
     @windowResize()  # 全局的window resize 操作
     @eventProcess(this)

@@ -3,12 +3,11 @@
 #     文件输出的api是setTreeViewData,其余的函数都附属于这个函数。
 # @author:
 #     创建: 李献魁
-#     修改: 李晟泽  2016.12.07; 
-
+#     修改: 李晟泽  2016.12.07;
 
 # g_treeViewMapData 存储treeview, grid 属性指标数字字符串映射表, 将其挂载到window对象上。
 # g_treeView: TreeView的引用对象，为了方便其他函数使用，将其设置为当前页面全局对象。
-g_treeView = null; 
+g_treeView = null;
 window.g_treeViewMapData = [];
 g_treeViewMapData["ObjectIDNS"] = [];
 g_treeViewMapData["DomainNS"] = [];
@@ -22,9 +21,10 @@ g_treeViewMapData["AttrName"] = [];
 # @param {outlet} MenuNode, 指向页面上的menu元素标签，设置menu的句柄。
 # @return {null}。
 setTreeViewData = (treeViewNode, MenuNode) ->
+  console.log "treeviewDataProcess.coffee setTreeViewData!"
   setTreeViewBasicPro(treeViewNode, MenuNode);
   initMonConfigMapData();
-  
+
   monitor2ObjectInfo  = new SysUserApiStruct.CShfeFtdcReqQryMonitor2ObjectField();
   monitor2ObjectField = {}
   monitor2ObjectField.reqObject = monitor2ObjectInfo
@@ -36,18 +36,18 @@ setTreeViewData = (treeViewNode, MenuNode) ->
     console.log "AllMonConfigDataReceived"
     userApi.emitter.emit monitor2ObjectField.reqMessage, monitor2ObjectField
 
-  orginalTreeViewData = []  
+  orginalTreeViewData = []
   userApi.emitter.on monitor2ObjectField.rspMessage, (data) ->
     pRspQryMonitor2Object = data.pRspQryMonitor2Object
     pRspQryMonitor2Object.ObjectID = g_treeViewMapData["ObjectIDNS"][pRspQryMonitor2Object.ObjectID];
     orginalTreeViewData.push data.pRspQryMonitor2Object
 
-    if data.bIsLast == true 
+    if data.bIsLast == true
       treeviewData = arrayConverseToJson(orginalTreeViewData)
       sortData treeviewData
       g_treeView.setDataSource new (kendo.data.HierarchicalDataSource)(data: treeviewData)
     return
-  
+
   arrayLeft = 0
   # 所检索到的text剩余个数
   inputValue = ''
@@ -264,7 +264,7 @@ setTreeViewBasicPro = (treeViewNode, MenuNode) ->
       dragAndDrop: true
       animation: true
       loadOnDemand: false
-      select: onSelect
+      select: onSelectGridData
     ).data('kendoTreeView')
 
     # MenuNode = menu
@@ -273,14 +273,14 @@ setTreeViewBasicPro = (treeViewNode, MenuNode) ->
       filter: '.k-in'
       select: treeSelect
 
-# initMonConfigMapData
+# # initMonConfigMapData
 initMonConfigMapData = ->
   monConfigInfoFieldArray = new Array(3)
-  for index in monConfigInfoFieldArray
+  for value, index in monConfigInfoFieldArray
     monConfigInfoFieldArray[index] = new SysUserApiStruct.CShfeFtdcReqQryMonConfigInfoField()
-  monConfigInfoField[0].ConfigName = "ObjectIDNS";  
-  monConfigInfoField[1].ConfigName = "DomainNS";
-  monConfigInfoField[2].ConfigName = "AttrName";
+  monConfigInfoFieldArray[0].ConfigName = "ObjectIDNS";
+  monConfigInfoFieldArray[1].ConfigName = "DomainNS";
+  monConfigInfoFieldArray[2].ConfigName = "AttrName";
 
   monConfigRspData = [];
   monConfigRspData["ObjectIDNS"] = "";
@@ -300,8 +300,8 @@ initMonConfigMapData = ->
   userApi.emitter.on monConfigInfoField.rspMessage, (data) ->
     pRspQryMonConfigInfo = data.pRspQryMonConfigInfo
     bIsLast = data.bIsLast
-    if pRspQryMonConfigInfo instanceof Object 
-      if undefined !== monConfigRspData[pRspQryMonConfigInfo.ConfigName] 
+    if pRspQryMonConfigInfo instanceof Object
+      if undefined != monConfigRspData[pRspQryMonConfigInfo.ConfigName]
         monConfigRspData[pRspQryMonConfigInfo.ConfigName] += pRspQryMonConfigInfo.ConfigContent
         isReqMonConfigEnd[pRspQryMonConfigInfo.ConfigName] = bIsLast;
         isAllRspEnd = true;
@@ -312,57 +312,55 @@ initMonConfigMapData = ->
             break;
 
         if isAllRspEnd
-          for ConfigName in isReqMonConfigEnd 
-            g_treeViewMapData[ConfigName] = processMonConfigInfoData(monConfigRspData[ConfigName])            
-          userApi.emitter.emit "AllMonConfigDataReceived",{}    
+          for ConfigName in isReqMonConfigEnd
+            g_treeViewMapData[ConfigName] = processMonConfigInfoData(monConfigRspData[ConfigName])
+          userApi.emitter.emit "AllMonConfigDataReceived",{}
 
   userApi.emitter.on EVENTS.RspQyrUserLoginSucceed, (data) =>
     console.log EVENTS.RspQyrUserLoginSucceed
-    for index in monConfigInfoFieldArray
+    for value,index in monConfigInfoFieldArray
       monConfigInfoField.reqObject = monConfigInfoFieldArray[index]
       userApi.emitter.emit monConfigInfoField.reqMessage, monConfigInfoField
 
 processMonConfigInfoData = (originData) ->
-	 tmpData = originData.split("\n");
-   numberStringIndex = getTransDataIndex(tmpData);	
-	 transData = [];
-
-	for i in tmpData
-		tmpData[i] = tmpData[i].split(",");
-		if tmpData[i].length === 2
-			transData[tmpData[i][numberStringIndex.numberIndex]] = tmpData[i][numberStringIndex.stringIndex].replace(' ','');
-			# console.log (tmpData[i][numberStringIndex.numberIndex] + ': ' + transData[tmpData[i][numberStringIndex.numberIndex]]);			
-	return transData;
-
+  tmpData = originData.split("\n")
+  numberStringIndex = getTransDataIndex(tmpData)
+  transData = []
+  for value, i in tmpData
+    tmpData[i] = tmpData[i].split(",");
+    if tmpData[i].length == 2
+      transData[tmpData[i][numberStringIndex.numberIndex]] = tmpData[i][numberStringIndex.stringIndex].replace(' ','');
+  return transData;
 
 getTransDataIndex = (originData) ->
-	indexData = {};
-	for i in originData
-		 testData = originData[i].split(",");
-		if (testData.length === 2) 
-			if isNumber(testData[0]) 
-				indexData.numberIndex = 0;
-				indexData.stringIndex = 1;
-      else 
-				indexData.numberIndex = 1;
-				indexData.stringIndex = 0;
-			break;
-	return indexData;
+  indexData = {}
+  for value,i in originData
+    testData = originData[i].split(",")
+    if testData.length == 2
+      if isNumber testData[0]
+        indexData.numberIndex = 0;
+        indexData.stringIndex = 1;
+      else
+        indexData.numberIndex = 1;
+        indexData.stringIndex = 0;
+      break
+  return indexData
 
 isNumber = (value) ->
-	 valueArray = value.split('');
-	 numbArray = ['0','1', '2', '3', '4', '5', '6', '7', '8', '9'];
-	 isNumb = false;
-	for i in valueArray
-		isNumb = false; 
-		for j in numbArray
-			if valueArray[i].toString() == numbArray[j].toString()
-				isNumb = true;
-				break;
-		if !isNumb 
+  valueArray = value.split('')
+  numbArray = ['0','1', '2', '3', '4', '5', '6', '7', '8', '9']
+  isNumb = false
+  for value1,i in  valueArray
+    if valueArray[i] == ' '
+      continue
+    isNumb = false
+    for  value2, j in numbArray
+      if valueArray[i].toString() == numbArray[j].toString()
+        isNumb = true
+        break
+    if !isNumb
       return isNumb
-	return isNumb
-
+  return isNumb
 
 WarningType = (value) ->
   if value == 0
@@ -584,7 +582,7 @@ sortData = (data) ->
 
 
 
-onSelect = (e) ->
+onSelectGridData = (e) ->
   # console.log(e)
   dataItem = g_treeView.dataItem(e.node)
   # console.log dataItem.id
@@ -616,7 +614,8 @@ onSelect = (e) ->
   if 'items' of dataItem == false or dataItem.items.length == 0
     uri = 'atom:#gridViewDemo' + dataItem.id
     atom.workspace.open uri
-
   return
 
-module.exports.setTreeViewData = setTreeViewData
+setTreeViewData = (treeViewNode, MenuNode) ->
+  console.log 'Test setTreeViewData!'
+exports.setTreeViewData = setTreeViewData
