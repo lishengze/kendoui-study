@@ -6,56 +6,40 @@
 #     修改: 李晟泽  2016.12.07; 
 
 
-# g_MonConfigInfo： 存储treeview, grid 属性指标数字字符串映射表, 将其挂载到window对象上。
+# g_treeViewMapData 存储treeview, grid 属性指标数字字符串映射表, 将其挂载到window对象上。
 # g_treeView: TreeView的引用对象，为了方便其他函数使用，将其设置为当前页面全局对象。
-var g_treeView = null; 
-window.g_MonConfigInfo = [];
-g_MonConfigInfo["ObjectIDNS"] = "";
-g_MonConfigInfo["DomainNS"] = "";
-g_MonConfigInfo["DomainNS"] = ""; 
-
-setTreeViewBasicPro = (@TreeviewList, @menu) ->
-    treeViewNode = @TreeviewList
-    g_treeView = $(treeViewNode).kendoTreeView(
-      template: '<i class=\'#= item.FrontAwesomeClass #\' id=\'#=item.id#\'></i><span class = "general-font">#=  item.text #</span>'
-      dragAndDrop: true
-      animation: true
-      loadOnDemand: false
-      select: onSelect
-    ).data('kendoTreeView')
-
-    MenuNode = @menu
-    $(MenuNode).kendoContextMenu
-      target: treeViewNode
-      filter: '.k-in'
-      select: treeSelect
+g_treeView = null; 
+window.g_treeViewMapData = [];
+g_treeViewMapData["ObjectIDNS"] = [];
+g_treeViewMapData["DomainNS"] = [];
+g_treeViewMapData["AttrName"] = [];
 
 # setTreeViewData
 # 功能: 设置treeView的组件内容;
 # 实现: 先设置TreeView的组件属性，接着向后台请求数据;
 #      然后对数据进行处理使其满足treeView插件的格式，最后将数据赋予treeView。
-# @param {outlet} TreeviewList，指向页面上的TreeView元素段落节点，设置TreeView的句柄。
-# @param {outlet} menu, 指向页面上的menu元素标签，设置menu的句柄。
+# @param {outlet} treeViewNode，指向页面上的TreeView元素段落节点，设置TreeView的句柄。
+# @param {outlet} MenuNode, 指向页面上的menu元素标签，设置menu的句柄。
 # @return {null}。
-setTreeViewData = (@TreeviewList, @menu)->
-  initializeGlobaData();
-
-  setTreeViewBasicPro(@TreeviewList, @menu);
-
+setTreeViewData = (treeViewNode, MenuNode) ->
+  setTreeViewBasicPro(treeViewNode, MenuNode);
+  initMonConfigMapData();
+  
   monitor2ObjectInfo  = new SysUserApiStruct.CShfeFtdcReqQryMonitor2ObjectField();
-  ReqQryMonitor2ObjectTopicRequestID = 0;
-  monitor2ObjectField       = {}
+  monitor2ObjectField = {}
   monitor2ObjectField.reqObject = monitor2ObjectInfo
   monitor2ObjectField.RequestId = ++window.ReqQryMonitor2ObjectTopicRequestID;
-  monitor2ObjectField.message   = EVENTS.RspQryMonitor2ObjectTopic + monitor2ObjectField.RequestId
+  monitor2ObjectField.rspMessage = EVENTS.RspQryMonitor2ObjectTopic + monitor2ObjectField.RequestId
+  monitor2ObjectField.reqMessage = EVENTS.ReqQryMonitor2ObjectTopic
 
-  treeViewMapData = [];
-  userApi.emitter.on EVENTS.RspQyrUserLoginSucceed, (data) =>
-    # console.log EVENTS.RspQyrUserLoginSucceed
-    userApi.emitter.emit EVENTS.ReqQryMonitor2ObjectTopic, monitor2ObjectField
+  userApi.emitter.on "AllMonConfigDataReceived", (data) =>
+    console.log "AllMonConfigDataReceived"
+    userApi.emitter.emit monitor2ObjectField.reqMessage, monitor2ObjectField
 
   orginalTreeViewData = []  
-  userApi.emitter.on monitor2ObjectField.message, (data) ->
+  userApi.emitter.on monitor2ObjectField.rspMessage, (data) ->
+    pRspQryMonitor2Object = data.pRspQryMonitor2Object
+    pRspQryMonitor2Object.ObjectID = g_treeViewMapData["ObjectIDNS"][pRspQryMonitor2Object.ObjectID];
     orginalTreeViewData.push data.pRspQryMonitor2Object
 
     if data.bIsLast == true 
@@ -74,14 +58,14 @@ setTreeViewData = (@TreeviewList, @menu)->
     itemScrollTop = 0
     term = @value.toUpperCase()
     tlen = term.length
-    # var beginDate = Date.now()
+    #  beginDate = Date.now()
     if keyCode == 13 and $.trim($(this).val()) != inputValue
       searchArray = []
       #  如果查询内容改变， 则设其为0，重新查找
       inputValue = $.trim($(this).val())
       $('.k-in .highlight').each ->
         # 选出所有k-in类下具有highlight 类属性的节点
-        # $(this).parent().text($(this).parent().text()); // 原代码
+        # $(this).parent().text($(this).parent().text()); # 原代码
         $(this).removeClass 'highlight'
         # 移除之前搜索的节点highlight属性
         return
@@ -131,8 +115,8 @@ setTreeViewData = (@TreeviewList, @menu)->
       g_treeView.select $(searchArray[0])
       arrayLeft = searchArray.length - 1
       # $('#g_treeView .k-item').each(function() {
-      # if ($(this).data('search') != term) { //选出不符合要求的元毒
-      # g_treeView.collapse($(this)); // 折叠所有不符合的元素
+      # if ($(this).data('search') != term) { #选出不符合要求的元毒
+      # g_treeView.collapse($(this)); # 折叠所有不符合的元素
       # }
       # })
     else if keyCode == 13 and $.trim($(this).val()) == inputValue and searchArray.length > 1
@@ -268,6 +252,118 @@ setTreeViewData = (@TreeviewList, @menu)->
     return
   return
 
+# setTreeViewBasicPro
+# 功能: 设置kendoTreeView 和 kendoContextMenu 的基本属性;
+# @param {outlet} treeViewNode，指向页面上的TreeView元素段落节点，设置TreeView的句柄。
+# @param {outlet} MenuNode, 指向页面上的menu元素标签，设置menu的句柄。
+# @return {null}。
+setTreeViewBasicPro = (treeViewNode, MenuNode) ->
+    # treeViewNode = TreeviewList
+    g_treeView = $(treeViewNode).kendoTreeView(
+      template: '<i class=\'#= item.FrontAwesomeClass #\' id=\'#=item.id#\'></i><span class = "general-font">#=  item.text #</span>'
+      dragAndDrop: true
+      animation: true
+      loadOnDemand: false
+      select: onSelect
+    ).data('kendoTreeView')
+
+    # MenuNode = menu
+    $(MenuNode).kendoContextMenu
+      target: treeViewNode
+      filter: '.k-in'
+      select: treeSelect
+
+# initMonConfigMapData
+initMonConfigMapData = ->
+  monConfigInfoFieldArray = new Array(3)
+  for index in monConfigInfoFieldArray
+    monConfigInfoFieldArray[index] = new SysUserApiStruct.CShfeFtdcReqQryMonConfigInfoField()
+  monConfigInfoField[0].ConfigName = "ObjectIDNS";  
+  monConfigInfoField[1].ConfigName = "DomainNS";
+  monConfigInfoField[2].ConfigName = "AttrName";
+
+  monConfigRspData = [];
+  monConfigRspData["ObjectIDNS"] = "";
+  monConfigRspData["DomainNS"] = "";
+  monConfigRspData["AttrName"] = "";
+
+  isReqMonConfigEnd = [];
+  isReqMonConfigEnd["ObjectIDNS"] = false;
+  isReqMonConfigEnd["DomainNS"] = false;
+  isReqMonConfigEnd["AttrName"] = false;
+
+  monConfigInfoField = {}
+  monConfigInfoField.RequestId = ++window.ReqQryMonConfigInfoRequestID;
+  monConfigInfoField.rspMessage = EVENTS.RspQryMonConfigInfo + monConfigInfoField.RequestId;
+  monConfigInfoField.reqMessage = EVENTS.ReqQryMonConfigInfo
+
+  userApi.emitter.on monConfigInfoField.rspMessage, (data) ->
+    pRspQryMonConfigInfo = data.pRspQryMonConfigInfo
+    bIsLast = data.bIsLast
+    if pRspQryMonConfigInfo instanceof Object 
+      if undefined !== monConfigRspData[pRspQryMonConfigInfo.ConfigName] 
+        monConfigRspData[pRspQryMonConfigInfo.ConfigName] += pRspQryMonConfigInfo.ConfigContent
+        isReqMonConfigEnd[pRspQryMonConfigInfo.ConfigName] = bIsLast;
+        isAllRspEnd = true;
+
+        for ConfigName in isReqMonConfigEnd
+          if !isReqMonConfigEnd[ConfigName]
+            isAllRspEnd = false;
+            break;
+
+        if isAllRspEnd
+          for ConfigName in isReqMonConfigEnd 
+            g_treeViewMapData[ConfigName] = processMonConfigInfoData(monConfigRspData[ConfigName])            
+          userApi.emitter.emit "AllMonConfigDataReceived",{}    
+
+  userApi.emitter.on EVENTS.RspQyrUserLoginSucceed, (data) =>
+    console.log EVENTS.RspQyrUserLoginSucceed
+    for index in monConfigInfoFieldArray
+      monConfigInfoField.reqObject = monConfigInfoFieldArray[index]
+      userApi.emitter.emit monConfigInfoField.reqMessage, monConfigInfoField
+
+processMonConfigInfoData = (originData) ->
+	 tmpData = originData.split("\n");
+   numberStringIndex = getTransDataIndex(tmpData);	
+	 transData = [];
+
+	for i in tmpData
+		tmpData[i] = tmpData[i].split(",");
+		if tmpData[i].length === 2
+			transData[tmpData[i][numberStringIndex.numberIndex]] = tmpData[i][numberStringIndex.stringIndex].replace(' ','');
+			# console.log (tmpData[i][numberStringIndex.numberIndex] + ': ' + transData[tmpData[i][numberStringIndex.numberIndex]]);			
+	return transData;
+
+
+getTransDataIndex = (originData) ->
+	indexData = {};
+	for i in originData
+		 testData = originData[i].split(",");
+		if (testData.length === 2) 
+			if isNumber(testData[0]) 
+				indexData.numberIndex = 0;
+				indexData.stringIndex = 1;
+      else 
+				indexData.numberIndex = 1;
+				indexData.stringIndex = 0;
+			break;
+	return indexData;
+
+isNumber = (value) ->
+	 valueArray = value.split('');
+	 numbArray = ['0','1', '2', '3', '4', '5', '6', '7', '8', '9'];
+	 isNumb = false;
+	for i in valueArray
+		isNumb = false; 
+		for j in numbArray
+			if valueArray[i].toString() == numbArray[j].toString()
+				isNumb = true;
+				break;
+		if !isNumb 
+      return isNumb
+	return isNumb
+
+
 WarningType = (value) ->
   if value == 0
     'fa fa-bell'
@@ -334,41 +430,22 @@ osLeafNodeData = [
     items: null
   }
 ]
-# rst 在当前rst数组中查找
-# idArray split之后的数组
-# idx 当前在idArray中查找的位置
-# tracePath 在整个finalRst中对应的路径
-# searchNode，在rst数值中查找由idArray和idx确定的finalRst的索引路径，结果输出到tracePath中。
 
-searchNode = (idArray, idx, rst, tracePath) ->
-  if idx == idArray.length + 1
-    return true
+arrayConverseToJson = (data) ->
+  finalRst = []
+  dataLenth = data.length
   i = 0
-  while i < rst.length
-    if idArray[idx] == rst[i].curID
-      tracePath.push i
-      #            if(rst[i].items===null){
-      #                rst[i].items=[]
-      #            }
-      # if rst[i].items == null
-      # ##   注册uri
-      #   uri = 'atom://gridDemo' + rst[i].text
-      #   # console.log uri
-      # atom.workspace.addOpener (uri) ->
-      #   # console.log 'addopen'
-      #   creatGridDemo uri
-      searchResult = searchNode(idArray, ++idx, rst[i].items, tracePath)
-      return searchResult
+  while i < data.length
+    process data[i], finalRst
     i++
-  false
+  finalRst
 
 process = (data, finalRst) ->
   idArray = data.ObjectID.split('.')
-  idArrayLength = idArray.length
   tracePath = []
   idx = 0
   searchResult = searchNode(idArray, idx, finalRst, tracePath)
-  distance = Math.abs(idArrayLength - (tracePath.length))
+  distance = Math.abs(idArray.length - (tracePath.length))
   itemsArray = finalRst
   if searchResult == false
     i = 0
@@ -380,11 +457,10 @@ process = (data, finalRst) ->
       'curID': idArray[tracePath.length]
       'id': if distance > 1 then 'exception!' else data.ObjectID
       'FrontAwesomeClass': WarningType(data.WarningActive)
-      'items': if idArray[idArrayLength - 2] == 'os' then osLeafNodeData else []
+      'items': if idArray[idArray.length - 2] == 'os' then osLeafNodeData else []
     if distance > 1
       process data, finalRst
   else
-    # searchResult=true表示如果有相同的ID节点，怎么处理
     i = 0
     while i < tracePath.length - 1
       itemsArray = itemsArray[tracePath[i]].items
@@ -397,21 +473,30 @@ process = (data, finalRst) ->
       process data, finalRst
   return
 
-arrayConverseToJson = (data) ->
-  finalRst = []
-  dataLenth = data.length
+# rst 在当前rst数组中查找
+# idArray split之后的数组
+# idx 当前在idArray中查找的位置
+# tracePath 在整个finalRst中对应的路径
+# searchNode，在rst数值中查找由idArray和idx确定的finalRst的索引路径，结果输出到tracePath中。
+searchNode = (idArray, idx, rst, tracePath) ->
+  if idx == idArray.length + 1
+    return true
   i = 0
-  while i < dataLenth
-    # 遍历整个data
-    process data[i], finalRst
+  while i < rst.length
+    if idArray[idx] == rst[i].curID
+      tracePath.push i
+      searchResult = searchNode(idArray, ++idx, rst[i].items, tracePath)
+      return searchResult
     i++
-  finalRst
+  false
+
+
 treeSelect = (e) ->
   # event data
   # e.item : the selected item
   # e.type : type is "select"
   # e.target : the current target of the contentmenu - the current element
-  # var dataItem = g_treeView.dataItem(e.target);//dataItem 获取该节点信息，返回的数据格式为kendo.data.Node
+  #  dataItem = g_treeView.dataItem(e.target);#dataItem 获取该节点信息，返回的数据格式为kendo.data.Node
   # console.log(g_treeView.dataItem(e.target))
   if typeof e != 'object'
     return
@@ -428,7 +513,7 @@ treeSelect = (e) ->
       $(e.target).parents().find('i').addClass('warning')
     when 'activeMessage'
       $(e.target).find('i').parents().find('i').removeClass('warning')
-      console.log 'active message'
+      console.log 'active rspMessage'
   return
 
 renameNode = (nodeJquery) ->
@@ -529,7 +614,7 @@ onSelect = (e) ->
         rspData = []
 
   if 'items' of dataItem == false or dataItem.items.length == 0
-    uri = 'atom://gridViewDemo' + dataItem.id
+    uri = 'atom:#gridViewDemo' + dataItem.id
     atom.workspace.open uri
 
   return
