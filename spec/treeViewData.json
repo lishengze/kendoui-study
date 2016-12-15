@@ -1,0 +1,2054 @@
+{ 
+  "rspData": [ 
+    {
+      "ObjectID": "BM.TRADE",
+      "ObjectName": "TRADE_[交易系统NGES]",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app",
+      "ObjectName": "app",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.arb.1",
+      "ObjectName": "arb01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.compositor.1",
+      "ObjectName": "compositor01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.compositor.2",
+      "ObjectName": "compositor02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.dbkernel.1",
+      "ObjectName": "dbkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.dbkernel.2",
+      "ObjectName": "dbkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.dbmt.1",
+      "ObjectName": "dbmt01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.dfmt.1",
+      "ObjectName": "dfmt01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.fens.1",
+      "ObjectName": "fens01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.fens.2",
+      "ObjectName": "fens02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.fens.3",
+      "ObjectName": "fens03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.fibclient.1",
+      "ObjectName": "fibclient01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.fibclient.2",
+      "ObjectName": "fibclient02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.fiblogger.1",
+      "ObjectName": "fiblogger01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.fiblogger.2",
+      "ObjectName": "fiblogger02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.fiblogger.3",
+      "ObjectName": "fiblogger03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.fiblogger.4",
+      "ObjectName": "fiblogger04",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.fibplay.1",
+      "ObjectName": "fibplay01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.fibplay.2",
+      "ObjectName": "fibplay02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.fibproxy.1",
+      "ObjectName": "fibproxy01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.fibproxy.2",
+      "ObjectName": "fibproxy02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.fibs2s.1",
+      "ObjectName": "fibs2s01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.fibs2s.2",
+      "ObjectName": "fibs2s02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.front.1",
+      "ObjectName": "front01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.front.2",
+      "ObjectName": "front02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.front.3",
+      "ObjectName": "front03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.front.4",
+      "ObjectName": "front04",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.front.5",
+      "ObjectName": "front05",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.front.6",
+      "ObjectName": "front06",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.front.7",
+      "ObjectName": "front07",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.front.8",
+      "ObjectName": "front08",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.front.9",
+      "ObjectName": "front09",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.front.10",
+      "ObjectName": "front10",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.incflowcmp.1",
+      "ObjectName": "incflowcmp01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.incflowcmp.2",
+      "ObjectName": "incflowcmp02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.mdkernel.1",
+      "ObjectName": "mdkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.mdkernel.2",
+      "ObjectName": "mdkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.mdkernel.3",
+      "ObjectName": "mdkernel03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.mdkernel.4",
+      "ObjectName": "mdkernel04",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.mdkernel.5",
+      "ObjectName": "mdkernel05",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.mdkernel.6",
+      "ObjectName": "mdkernel06",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.mdkernel.7",
+      "ObjectName": "mdkernel07",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.mdkernel.8",
+      "ObjectName": "mdkernel08",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.mdkernel.9",
+      "ObjectName": "mdkernel09",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.mdkernel.10",
+      "ObjectName": "mdkernel10",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.mdproxy.1",
+      "ObjectName": "mdproxy01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.mdproxy.2",
+      "ObjectName": "mdproxy02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.qkernel.1",
+      "ObjectName": "qkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.qkernel.2",
+      "ObjectName": "qkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.tinit.1",
+      "ObjectName": "tinit01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.tkernel.1",
+      "ObjectName": "tkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.app.tkernel.2",
+      "ObjectName": "tkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.os",
+      "ObjectName": "os",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.os.mon-blade01",
+      "ObjectName": "mon-blade01(172.1.128.151)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.os.mon-blade02",
+      "ObjectName": "mon-blade02(172.1.128.152)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.os.mon-blade03",
+      "ObjectName": "mon-blade03(172.1.128.153)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian.db",
+      "ObjectName": "db",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.PuDian",
+      "ObjectName": "PuDian",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app",
+      "ObjectName": "app",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.arb.1",
+      "ObjectName": "arb01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.compositor.1",
+      "ObjectName": "compositor01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.compositor.2",
+      "ObjectName": "compositor02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.dbkernel.1",
+      "ObjectName": "dbkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.dbkernel.2",
+      "ObjectName": "dbkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.dbmt.1",
+      "ObjectName": "dbmt01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.dfmt.1",
+      "ObjectName": "dfmt01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.fens.1",
+      "ObjectName": "fens01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.fens.2",
+      "ObjectName": "fens02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.fens.3",
+      "ObjectName": "fens03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.fibclient.1",
+      "ObjectName": "fibclient01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.fibclient.2",
+      "ObjectName": "fibclient02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.fiblogger.1",
+      "ObjectName": "fiblogger01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.fiblogger.2",
+      "ObjectName": "fiblogger02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.fiblogger.3",
+      "ObjectName": "fiblogger03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.fiblogger.4",
+      "ObjectName": "fiblogger04",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.fibplay.1",
+      "ObjectName": "fibplay01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.fibplay.2",
+      "ObjectName": "fibplay02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.fibproxy.1",
+      "ObjectName": "fibproxy01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.fibproxy.2",
+      "ObjectName": "fibproxy02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.fibs2s.1",
+      "ObjectName": "fibs2s01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.fibs2s.2",
+      "ObjectName": "fibs2s02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.front.1",
+      "ObjectName": "front01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.front.2",
+      "ObjectName": "front02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.front.3",
+      "ObjectName": "front03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.front.4",
+      "ObjectName": "front04",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.front.5",
+      "ObjectName": "front05",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.front.6",
+      "ObjectName": "front06",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.front.7",
+      "ObjectName": "front07",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.front.8",
+      "ObjectName": "front08",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.front.9",
+      "ObjectName": "front09",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.front.10",
+      "ObjectName": "front10",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.incflowcmp.1",
+      "ObjectName": "incflowcmp01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.incflowcmp.2",
+      "ObjectName": "incflowcmp02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.mdkernel.1",
+      "ObjectName": "mdkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.mdkernel.2",
+      "ObjectName": "mdkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.mdkernel.3",
+      "ObjectName": "mdkernel03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.mdkernel.4",
+      "ObjectName": "mdkernel04",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.mdkernel.5",
+      "ObjectName": "mdkernel05",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.mdkernel.6",
+      "ObjectName": "mdkernel06",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.mdkernel.7",
+      "ObjectName": "mdkernel07",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.mdkernel.8",
+      "ObjectName": "mdkernel08",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.mdkernel.9",
+      "ObjectName": "mdkernel09",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.mdkernel.10",
+      "ObjectName": "mdkernel10",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.mdproxy.1",
+      "ObjectName": "mdproxy01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.mdproxy.2",
+      "ObjectName": "mdproxy02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.qkernel.1",
+      "ObjectName": "qkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.qkernel.2",
+      "ObjectName": "qkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.tinit.1",
+      "ObjectName": "tinit01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.tkernel.1",
+      "ObjectName": "tkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.app.tkernel.2",
+      "ObjectName": "tkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.os",
+      "ObjectName": "os",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.os.mon-blade04",
+      "ObjectName": "mon-blade04(172.1.128.154)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.os.mon-blade05",
+      "ObjectName": "mon-blade05(172.1.128.155)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.os.mon-blade06",
+      "ObjectName": "mon-blade06(172.1.128.156)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ.db",
+      "ObjectName": "db",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.ZhangJ",
+      "ObjectName": "ZhangJ",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app",
+      "ObjectName": "app",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.arb.1",
+      "ObjectName": "arb01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.compositor.1",
+      "ObjectName": "compositor01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.compositor.2",
+      "ObjectName": "compositor02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.dbkernel.1",
+      "ObjectName": "dbkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.dbkernel.2",
+      "ObjectName": "dbkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.dbmt.1",
+      "ObjectName": "dbmt01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.dfmt.1",
+      "ObjectName": "dfmt01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.fens.1",
+      "ObjectName": "fens01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.fens.2",
+      "ObjectName": "fens02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.fens.3",
+      "ObjectName": "fens03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.fibclient.1",
+      "ObjectName": "fibclient01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.fibclient.2",
+      "ObjectName": "fibclient02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.fiblogger.1",
+      "ObjectName": "fiblogger01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.fiblogger.2",
+      "ObjectName": "fiblogger02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.fibplay.1",
+      "ObjectName": "fibplay01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.fibplay.2",
+      "ObjectName": "fibplay02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.fibproxy.1",
+      "ObjectName": "fibproxy01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.fibproxy.2",
+      "ObjectName": "fibproxy02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.front.1",
+      "ObjectName": "front01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.front.2",
+      "ObjectName": "front02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.front.3",
+      "ObjectName": "front03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.front.4",
+      "ObjectName": "front04",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.front.5",
+      "ObjectName": "front05",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.front.6",
+      "ObjectName": "front06",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.front.7",
+      "ObjectName": "front07",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.front.8",
+      "ObjectName": "front08",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.mdkernel.1",
+      "ObjectName": "mdkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.mdkernel.2",
+      "ObjectName": "mdkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.mdkernel.3",
+      "ObjectName": "mdkernel03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.mdkernel.4",
+      "ObjectName": "mdkernel04",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.mdkernel.5",
+      "ObjectName": "mdkernel05",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.mdkernel.6",
+      "ObjectName": "mdkernel06",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.mdkernel.7",
+      "ObjectName": "mdkernel07",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.mdkernel.8",
+      "ObjectName": "mdkernel08",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.qkernel.1",
+      "ObjectName": "qkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.qkernel.2",
+      "ObjectName": "qkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.tinit.1",
+      "ObjectName": "tinit01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.tkernel.1",
+      "ObjectName": "tkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.app.tkernel.2",
+      "ObjectName": "tkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.os",
+      "ObjectName": "os",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.os.mon-blade07",
+      "ObjectName": "mon-blade07(172.1.128.157)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.os.mon-blade08",
+      "ObjectName": "mon-blade08(172.1.128.158)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing.db",
+      "ObjectName": "db",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE.BeiJing",
+      "ObjectName": "BeiJing",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2",
+      "ObjectName": "TRADE2_[交易系统NGES2.0]",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app",
+      "ObjectName": "app",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.arb.1",
+      "ObjectName": "arb01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.dbkernel.1",
+      "ObjectName": "dbkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.dbkernel.2",
+      "ObjectName": "dbkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.dbmt.1",
+      "ObjectName": "dbmt01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.dfmt.1",
+      "ObjectName": "dfmt01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.fens.1",
+      "ObjectName": "fens01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.fens.2",
+      "ObjectName": "fens02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.fens.3",
+      "ObjectName": "fens03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.fibclient.1",
+      "ObjectName": "fibclient01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.fibclient.2",
+      "ObjectName": "fibclient02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.fibplay.1",
+      "ObjectName": "fibplay01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.fibplay.2",
+      "ObjectName": "fibplay02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.fibproxy.1",
+      "ObjectName": "fibproxy01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.fibproxy.2",
+      "ObjectName": "fibproxy02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.fibs2s.1",
+      "ObjectName": "fibs2s01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.fibs2s.2",
+      "ObjectName": "fibs2s02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.front.1",
+      "ObjectName": "front01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.front.2",
+      "ObjectName": "front02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.front.3",
+      "ObjectName": "front03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.front.4",
+      "ObjectName": "front04",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.mdkernel.1",
+      "ObjectName": "mdkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.mdkernel.2",
+      "ObjectName": "mdkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.mdkernel.3",
+      "ObjectName": "mdkernel03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.mdkernel.4",
+      "ObjectName": "mdkernel04",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.qkernel.1",
+      "ObjectName": "qkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.qkernel.2",
+      "ObjectName": "qkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.tinit.1",
+      "ObjectName": "tinit01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.tserver.1",
+      "ObjectName": "tserver01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.tserver.2",
+      "ObjectName": "tserver02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.v2fibplay.1",
+      "ObjectName": "v2fibplay01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.v2fibplay.2",
+      "ObjectName": "v2fibplay02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.v2fibproxy.1",
+      "ObjectName": "v2fibproxy01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.app.v2fibproxy.2",
+      "ObjectName": "v2fibproxy02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.os",
+      "ObjectName": "os",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.os.mon-blade01",
+      "ObjectName": "mon-blade01(172.1.128.151)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.os.mon-blade02",
+      "ObjectName": "mon-blade02(172.1.128.152)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.os.mon-blade03",
+      "ObjectName": "mon-blade03(172.1.128.153)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian.db",
+      "ObjectName": "db",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.PuDian",
+      "ObjectName": "PuDian",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app",
+      "ObjectName": "app",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.arb.1",
+      "ObjectName": "arb01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.dbkernel.1",
+      "ObjectName": "dbkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.dbkernel.2",
+      "ObjectName": "dbkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.dbmt.1",
+      "ObjectName": "dbmt01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.dfmt.1",
+      "ObjectName": "dfmt01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.fens.1",
+      "ObjectName": "fens01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.fens.2",
+      "ObjectName": "fens02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.fens.3",
+      "ObjectName": "fens03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.fibclient.1",
+      "ObjectName": "fibclient01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.fibclient.2",
+      "ObjectName": "fibclient02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.fibplay.1",
+      "ObjectName": "fibplay01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.fibplay.2",
+      "ObjectName": "fibplay02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.fibproxy.1",
+      "ObjectName": "fibproxy01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.fibproxy.2",
+      "ObjectName": "fibproxy02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.fibs2s.1",
+      "ObjectName": "fibs2s01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.fibs2s.2",
+      "ObjectName": "fibs2s02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.front.1",
+      "ObjectName": "front01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.front.2",
+      "ObjectName": "front02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.front.3",
+      "ObjectName": "front03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.front.4",
+      "ObjectName": "front04",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.front.5",
+      "ObjectName": "front05",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.front.6",
+      "ObjectName": "front06",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.front.7",
+      "ObjectName": "front07",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.front.8",
+      "ObjectName": "front08",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.front.9",
+      "ObjectName": "front09",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.front.10",
+      "ObjectName": "front10",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.front.11",
+      "ObjectName": "front11",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.front.12",
+      "ObjectName": "front12",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.front.13",
+      "ObjectName": "front13",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.front.14",
+      "ObjectName": "front14",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.front.15",
+      "ObjectName": "front15",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.front.16",
+      "ObjectName": "front16",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.mdkernel.1",
+      "ObjectName": "mdkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.mdkernel.2",
+      "ObjectName": "mdkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.mdkernel.3",
+      "ObjectName": "mdkernel03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.mdkernel.4",
+      "ObjectName": "mdkernel04",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.mdkernel.5",
+      "ObjectName": "mdkernel05",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.mdkernel.6",
+      "ObjectName": "mdkernel06",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.mdkernel.7",
+      "ObjectName": "mdkernel07",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.mdkernel.8",
+      "ObjectName": "mdkernel08",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.mdkernel.9",
+      "ObjectName": "mdkernel09",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.mdkernel.10",
+      "ObjectName": "mdkernel10",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.mdkernel.11",
+      "ObjectName": "mdkernel11",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.mdkernel.12",
+      "ObjectName": "mdkernel12",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.mdkernel.13",
+      "ObjectName": "mdkernel13",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.mdkernel.14",
+      "ObjectName": "mdkernel14",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.mdkernel.15",
+      "ObjectName": "mdkernel15",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.mdkernel.16",
+      "ObjectName": "mdkernel16",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.qkernel.1",
+      "ObjectName": "qkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.qkernel.2",
+      "ObjectName": "qkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.tinit.1",
+      "ObjectName": "tinit01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.tserver.1",
+      "ObjectName": "tserver01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.tserver.2",
+      "ObjectName": "tserver02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.v2fibplay.1",
+      "ObjectName": "v2fibplay01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.v2fibplay.2",
+      "ObjectName": "v2fibplay02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.v2fibproxy.1",
+      "ObjectName": "v2fibproxy01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.v2fibproxy.2",
+      "ObjectName": "v2fibproxy02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.v2fibproxy.3",
+      "ObjectName": "v2fibproxy03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.app.v2fibproxy.4",
+      "ObjectName": "v2fibproxy04",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.os",
+      "ObjectName": "os",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.os.mon-blade04",
+      "ObjectName": "mon-blade04(172.1.128.154)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.os.mon-blade05",
+      "ObjectName": "mon-blade05(172.1.128.155)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.os.mon-blade06",
+      "ObjectName": "mon-blade06(172.1.128.156)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ.db",
+      "ObjectName": "db",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.ZhangJ",
+      "ObjectName": "ZhangJ",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app",
+      "ObjectName": "app",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.arb.1",
+      "ObjectName": "arb01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.dbkernel.1",
+      "ObjectName": "dbkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.dbkernel.2",
+      "ObjectName": "dbkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.dbmt.1",
+      "ObjectName": "dbmt01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.dfmt.1",
+      "ObjectName": "dfmt01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.fens.1",
+      "ObjectName": "fens01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.fibclient.1",
+      "ObjectName": "fibclient01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.fibclient.2",
+      "ObjectName": "fibclient02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.fibplay.1",
+      "ObjectName": "fibplay01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.fibplay.2",
+      "ObjectName": "fibplay02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.fibproxy.1",
+      "ObjectName": "fibproxy01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.fibproxy.2",
+      "ObjectName": "fibproxy02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.fibs2s.1",
+      "ObjectName": "fibs2s01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.fibs2s.2",
+      "ObjectName": "fibs2s02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.front.1",
+      "ObjectName": "front01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.front.2",
+      "ObjectName": "front02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.front.3",
+      "ObjectName": "front03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.front.4",
+      "ObjectName": "front04",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.mdkernel.1",
+      "ObjectName": "mdkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.mdkernel.2",
+      "ObjectName": "mdkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.mdkernel.3",
+      "ObjectName": "mdkernel03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.mdkernel.4",
+      "ObjectName": "mdkernel04",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.qkernel.1",
+      "ObjectName": "qkernel01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.qkernel.2",
+      "ObjectName": "qkernel02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.tinit.1",
+      "ObjectName": "tinit01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.tserver.1",
+      "ObjectName": "tserver01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.tserver.2",
+      "ObjectName": "tserver02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.v2fibplay.1",
+      "ObjectName": "v2fibplay01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.app.v2fibproxy.1",
+      "ObjectName": "v2fibproxy01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.os",
+      "ObjectName": "os",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.os.mon-blade07",
+      "ObjectName": "mon-blade07(172.1.128.157)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.os.mon-blade08",
+      "ObjectName": "mon-blade08(172.1.128.158)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing.db",
+      "ObjectName": "db",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TRADE2.BeiJing",
+      "ObjectName": "BeiJing",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE",
+      "ObjectName": "DATABASE_[数据库]",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.PuDian.app",
+      "ObjectName": "app",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.PuDian.app.TBDB",
+      "ObjectName": "TBDB",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.PuDian.app.DiskMon_TBDB.1",
+      "ObjectName": "DiskMon_TBDB01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.PuDian.app.dbmon_tbdb.1",
+      "ObjectName": "dbmon_tbdb01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.PuDian.app.monitorOGG_sh",
+      "ObjectName": "monitorOGG_sh",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.PuDian.os",
+      "ObjectName": "os",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.PuDian.os.mon3_pd",
+      "ObjectName": "mon3_pd(192.168.0.3)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.PuDian.os.mon4_pd",
+      "ObjectName": "mon4_pd(192.168.0.4)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.PuDian.os.mon5_pd",
+      "ObjectName": "mon5_pd(192.168.0.5)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.PuDian.os.mon6_pd",
+      "ObjectName": "mon6_pd(192.168.0.6)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.PuDian.db",
+      "ObjectName": "db",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.PuDian.db.TBDB",
+      "ObjectName": "TBDB",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.PuDian",
+      "ObjectName": "PuDian",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.ZhangJ.app",
+      "ObjectName": "app",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.ZhangJ.app.TBDB",
+      "ObjectName": "TBDB",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.ZhangJ.app.DiskMon_TBDB.1",
+      "ObjectName": "DiskMon_TBDB01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.ZhangJ.app.dbmon_tbdb.1",
+      "ObjectName": "dbmon_tbdb01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.ZhangJ.app.monitorOGG_sh",
+      "ObjectName": "monitorOGG_sh",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.ZhangJ.app.DATABASE_sp",
+      "ObjectName": "存储过程",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.ZhangJ.os",
+      "ObjectName": "os",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.ZhangJ.os.local_test",
+      "ObjectName": "local_test(127.0.0.1)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.ZhangJ.db",
+      "ObjectName": "db",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.ZhangJ.db.MDB",
+      "ObjectName": "MDB",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.DATABASE.ZhangJ",
+      "ObjectName": "ZhangJ",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.AUTHCENTER",
+      "ObjectName": "AUTHCENTER_[认证中心]",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.AUTHCENTER.PuDian.app",
+      "ObjectName": "app",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.AUTHCENTER.PuDian.app.Bootstrap_auth_authcenterInet.1",
+      "ObjectName": "Bootstrap_auth_authcenterInet01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.AUTHCENTER.PuDian.app.fsync.5",
+      "ObjectName": "fsync05",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.AUTHCENTER.PuDian.app.sfit_dbexpress.3",
+      "ObjectName": "sfit_dbexpress03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.AUTHCENTER.PuDian.os",
+      "ObjectName": "os",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.AUTHCENTER.PuDian.os.mon1_pd",
+      "ObjectName": "mon1_pd(192.168.0.1)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.AUTHCENTER.PuDian.db",
+      "ObjectName": "db",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.AUTHCENTER.PuDian.tomcat",
+      "ObjectName": "tomcat",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.AUTHCENTER.PuDian.tomcat.authcenterTest01",
+      "ObjectName": "authcenterTest01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.AUTHCENTER.PuDian.tomcat.authcenterTest02",
+      "ObjectName": "authcenterTest02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.AUTHCENTER.PuDian.tomcat.access01",
+      "ObjectName": "access01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.AUTHCENTER.PuDian.tomcat.accesscenter01",
+      "ObjectName": "accesscenter01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.AUTHCENTER.PuDian",
+      "ObjectName": "PuDian",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.BECK",
+      "ObjectName": "BECK_[资金管理]",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.BECK.PuDian.app",
+      "ObjectName": "app",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.BECK.PuDian.app.Bootstrap_beck_beck.2",
+      "ObjectName": "Bootstrap_beck_beck02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.BECK.PuDian.app.cs.2",
+      "ObjectName": "cs02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.BECK.PuDian.app.jobctl.2",
+      "ObjectName": "jobctl02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.BECK.PuDian.app.BECK_dblog",
+      "ObjectName": "数据库日志",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.BECK.PuDian.app.BECK_sp",
+      "ObjectName": "存储过程",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.BECK.PuDian.os",
+      "ObjectName": "os",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.BECK.PuDian.os.mon1_pd",
+      "ObjectName": "mon1_pd(192.168.0.1)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.BECK.PuDian.db",
+      "ObjectName": "db",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.BECK.PuDian.tomcat",
+      "ObjectName": "tomcat",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.BECK.PuDian.tomcat.beck01",
+      "ObjectName": "beck01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.BECK.PuDian.tomcat.beck02",
+      "ObjectName": "beck02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.BECK.PuDian",
+      "ObjectName": "PuDian",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW",
+      "ObjectName": "WWW_[网站监控]",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.app",
+      "ObjectName": "app",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.app.apacheConn_sh.1",
+      "ObjectName": "apacheConn_sh01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.app.md4website.1",
+      "ObjectName": "md4website01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.app.MonitorMain",
+      "ObjectName": "MonitorMain",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.app.MakeServer",
+      "ObjectName": "MakeServer",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.app.MakeLastServer",
+      "ObjectName": "MakeLastServer",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.app.Bootstrap_wwwmedia.1",
+      "ObjectName": "Bootstrap_wwwmedia01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.app.Bootstrap_web_wwwtomcat.1",
+      "ObjectName": "Bootstrap_web_wwwtomcat01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.app.apache.1",
+      "ObjectName": "apache1",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.app.apache.2",
+      "ObjectName": "apache2",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.os",
+      "ObjectName": "os",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.os.monfront1_pd",
+      "ObjectName": "monfront1_pd(192.168.79.63)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.os.mon1_pd",
+      "ObjectName": "mon1_pd(192.168.0.1)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.db",
+      "ObjectName": "db",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.tomcat",
+      "ObjectName": "tomcat",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.tomcat.wwwmedia",
+      "ObjectName": "wwwmedia",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.tomcat.wwwtomcat01",
+      "ObjectName": "wwwtomcat01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian.tomcat.wwwtomcat02",
+      "ObjectName": "wwwtomcat02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.WWW.PuDian",
+      "ObjectName": "PuDian",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS",
+      "ObjectName": "TMS_[监控系统]",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app",
+      "ObjectName": "app",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monprobe.1",
+      "ObjectName": "monprobe01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monprobe.2",
+      "ObjectName": "monprobe02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monprobe.3",
+      "ObjectName": "monprobe03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monprobe.4",
+      "ObjectName": "monprobe04",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monprobe.5",
+      "ObjectName": "monprobe05",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monprobe.6",
+      "ObjectName": "monprobe06",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monprobe.7",
+      "ObjectName": "monprobe07",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monprobe.8",
+      "ObjectName": "monprobe08",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monproxy.1",
+      "ObjectName": "monproxy01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monproxy.2",
+      "ObjectName": "monproxy02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monproxy.3",
+      "ObjectName": "monproxy03",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monproxy.4",
+      "ObjectName": "monproxy04",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monagent.1",
+      "ObjectName": "monagent01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monagent.2",
+      "ObjectName": "monagent02",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monmanager.1",
+      "ObjectName": "monmanager01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monslog.1",
+      "ObjectName": "monslog01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monfibclient.1",
+      "ObjectName": "monfibclient01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monfront.1",
+      "ObjectName": "monfront01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.app.monmquery.1",
+      "ObjectName": "monmquery01",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.os",
+      "ObjectName": "os",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.os.mon-blade01",
+      "ObjectName": "mon-blade01(172.1.128.151)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.os.mon-blade02",
+      "ObjectName": "mon-blade02(172.1.128.152)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.os.mon-blade03",
+      "ObjectName": "mon-blade03(172.1.128.153)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.os.mon-blade04",
+      "ObjectName": "mon-blade04(172.1.128.154)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.os.mon-blade05",
+      "ObjectName": "mon-blade05(172.1.128.155)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.os.mon-blade06",
+      "ObjectName": "mon-blade06(172.1.128.156)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.os.mon-blade07",
+      "ObjectName": "mon-blade07(172.1.128.157)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.os.mon-blade08",
+      "ObjectName": "mon-blade08(172.1.128.158)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.os.mon-console",
+      "ObjectName": "mon-console(172.1.128.170)",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ.db",
+      "ObjectName": "db",
+      "WarningActive": "0"
+    },
+    {
+      "ObjectID": "BM.TMS.ZhangJ",
+      "ObjectName": "ZhangJ",
+      "WarningActive": "0"
+    }
+  ] 
+}

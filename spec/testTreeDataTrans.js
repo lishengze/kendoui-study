@@ -1,4 +1,4 @@
-function WarningType (value) {
+function getWarningType (value) {
   if (value === 0) {
     return 'fa fa-bell';
   } else if (value === 1) {
@@ -55,40 +55,41 @@ var osLeafNodeData = [
 ];
 
 function arrayConverseToJson (data) {
-  var dataLenth, finalRst, i;
-  finalRst = [];
-  dataLenth = data.length;
-  i = 0;
-  while (i < data.length) {
-    process(data[i], finalRst);
-    i++;
+  var finalResult = [];
+  for (var i = 0; i < data.length; ++i) {
+    process(data[i], finalResult);
   }
-  return finalRst;
+  return finalResult;
 };
 
-function process (data, finalRst) {
-  var distance, i, idArray, idx, itemsArray, searchResult, tracePath;
-  idArray = data.ObjectID.split('.');
-  tracePath = [];
-  idx = 0;
-  searchResult = searchNode(idArray, idx, finalRst, tracePath);
-  distance = Math.abs(idArray.length - tracePath.length);
-  itemsArray = finalRst;
+function process (data, finalResult) {
+  var objectIDArray = data.ObjectID.split('.');
+  var tracePath = [];
+  var idIndex = 0;
+  var searchResult = searchNode(objectIDArray, idIndex, finalResult, tracePath);
+
+  console.log ('searchResult: ' + searchResult);
+  console.log ('objectIDArray: '); console.log(objectIDArray);
+  console.log ('idIndex: ' + idIndex);
+  console.log ('finalResult: '); console.log (finalResult);
+  console.log ('tracePath: '); console.log (tracePath); console.log ('\n');
+
+  var distance = Math.abs(objectIDArray.length - tracePath.length);
+  var itemsArray = finalResult;
+
   if (searchResult === false) {
-    i = 0;
-    while (i < tracePath.length) {
+    for (var i = 0; i< tracePath.length; ++i) {
       itemsArray = itemsArray[tracePath[i]].items;
-      i++;
     }
     itemsArray.push({
       'text': distance > 1 ? 'exception!' : data.ObjectName,
-      'curID': idArray[tracePath.length],
+      'curID': objectIDArray[tracePath.length],
       'id': distance > 1 ? 'exception!' : data.ObjectID,
-      'FrontAwesomeClass': WarningType(data.WarningActive),
-      'items': idArray[idArray.length - 2] === 'os' ? osLeafNodeData : []
+      'FrontAwesomeClass': getWarningType(data.WarningActive),
+      'items': objectIDArray[objectIDArray.length - 2] === 'os' ? osLeafNodeData : []
     });
     if (distance > 1) {
-      process(data, finalRst);
+      process(data, finalResult);
     }
   } else {
     i = 0;
@@ -98,41 +99,42 @@ function process (data, finalRst) {
     }
     itemsArray.push({
       'text': distance > 1 ? 'exception!' : data.ObjectName,
-      curID: idArray[tracePath.length],
+      curID: objectIDArray[tracePath.length],
       items: null
     });
     if (distance > 1) {
-      process(data, finalRst);
+      process(data, finalResult);
     }
   }
 };
 
-function searchNode (idArray, idx, rst, tracePath) {
-  var i, searchResult;
-  if (idx === idArray.length + 1) {
+// result 在当前result数组中查找
+// idArray split之后的数组
+// idx 当前在idArray中查找的位置
+// tracePath 在整个finalRst中对应的路径
+// searchNode，在result数值中查找由idArray和idx确定的finalRst的索引路径，结果输出到tracePath中。
+function searchNode (objectIDArray, idIndex, result, tracePath) {
+  if (idIndex === objectIDArray.length + 1) {
     return true;
   }
-  i = 0;
-  while (i < rst.length) {
-    if (idArray[idx] === rst[i].curID) {
+  for (var i = 0; i < result.length; ++i) {
+    if (objectIDArray[idIndex] === result[i].curID) {
       tracePath.push(i);
-      searchResult = searchNode(idArray, ++idx, rst[i].items, tracePath);
-      return searchResult;
-    }
-    i++;
+      return searchNode(objectIDArray, ++idIndex, result[i].items, tracePath);
+    }    
   }
   return false;
 };
 
 function testFunc () {
-    var ObjectIDArrray = ["A", "A.a", "B", "B.b"];
-	var ObjectNameArray = ["A", "a", "B", "b"];
+    var ObjectIDArrray = ["A.a", "A", "B", "B.b"];
+	  var ObjectNameArray = ["a", "A", "B", "b"];
     var originData = [];
     for (var i = 0; i < ObjectIDArrray.length; ++i) {
         originData.push({'ObjectID': ObjectIDArrray[i], 'ObjectName': ObjectNameArray[i], 'WarningActive': 0});
     }
-    console.log ('OriginData: ');
-    console.log (originData);
+    // console.log ('OriginData: ');
+    // console.log (originData);
 
     var transData = arrayConverseToJson(originData);
     console.log ('TransData: ');
