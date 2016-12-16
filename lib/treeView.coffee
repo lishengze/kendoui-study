@@ -3,7 +3,7 @@ _ = require 'underscore-plus'
 {Disposable} = require 'atom'
 {ScrollView} = require 'atom-space-pen-views'
 $=require('atom-space-pen-views').$
-{setTreeViewData} = require './treeViewDataProcess.js'
+{buildTreeView} = require './treeViewDataProcess.js'
 
 module.exports =
 class TreeView extends ScrollView
@@ -31,7 +31,7 @@ class TreeView extends ScrollView
             @i class: 'fa fa-times', '取消告警通知'
   attached: ->
     
-    setTreeViewData(@TreeviewList, @menu)
+    buildTreeView(@TreeviewList, @menu)
     
     @setTreeviewHeight()
 
@@ -58,6 +58,7 @@ class TreeView extends ScrollView
 
   handleEvents: ->
     @on 'mousedown', '.tree-view-resize-handle', (e) => @resizeStarted(e)
+    
   resizeStarted: =>
     $(document).on('mousemove', @resizeTreeView)
     $(document).on('mouseup', @resizeStopped)

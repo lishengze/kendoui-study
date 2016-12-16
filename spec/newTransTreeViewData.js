@@ -97,6 +97,10 @@ function sortTreeViewData (originData) {
 	return sortedData;
 }
 
+function sortTreeNode (nodeArray) {
+	
+}
+
 function completeTreeData (sortedData) {
 	for (var i = sortedData.length - 1; i > 0; --i) {
 		for (var j = 0; j < sortedData[i].length; ++j) {
@@ -161,12 +165,6 @@ function getChildNode (curFatherNode, treeNodeArray, curTreeNodeHeight) {
 				// 'FrontAwesomeClass': getWarningType(treeNodeArray[curTreeNodeHeight][i].WarningActive),
 				'items': getChildNode(treeNodeArray[curTreeNodeHeight][i], treeNodeArray, curTreeNodeHeight+1),
 			};
-			// if ("BM.TRADE.PuDian.os.mon-blade01" === treeNodeArray[curTreeNodeHeight][i].ObjectID) {
-			// 	console.log (curFatherNode);
-			// 	console.log (curChildTreeData);
-			// 	console.log (curChildTreeData.items.length === 0);
-			// 	console.log (isOSLeafNode(treeNodeArray[curTreeNodeHeight][i].ObjectID));
-			// }
 			if (curChildTreeData.items && curChildTreeData.items.length === 0 
 			    && isOSLeafNode(treeNodeArray[curTreeNodeHeight][i].ObjectID)) {
 				curChildTreeData.items = osLeafNodeData;
@@ -180,8 +178,6 @@ function getChildNode (curFatherNode, treeNodeArray, curTreeNodeHeight) {
 
 function isOSLeafNode (treeNodeID) {
 	var nodeArray = treeNodeID.split('.');
-	// if (nodeArray[nodeArray.length - 2] === "os") return true;
-	// return false;
 
 	for (var i = 0; i < nodeArray.length; ++i) {
 		if (nodeArray[i] === "os") return true;
