@@ -1,5 +1,3 @@
-var fs = require("fs");
-var transTreeViewFileName = "./transTreeViewData.txt";
 var osLeafNodeData = [
   {
     'text': '处理器',
@@ -94,11 +92,34 @@ function sortTreeViewData (originData) {
 		}
 	}
 	sortedData = completeTreeData(sortedData);
+
+	for (i = 0; i < sortedData.length; ++i) {
+		sortedData[i] = quickSort(sortedData[i], minCompTreeData);
+		for (var j = 0; j < sortedData[i].length; ++i) {
+			console.log (sortedData[i][j].ObjectID);
+		}
+	}
 	return sortedData;
 }
 
-function sortTreeNode (nodeArray) {
-	
+function minCompTreeData (obj1, obj2) {
+	return obj1.ObjectID.toLowerCase() < obj2.ObjectID.toLowerCase();
+}
+
+function quickSort (arr, minCompFunc) {
+	if (arr.length <= 1) { return arr; }
+	var pivotIndex = Math.floor(arr.length / 2);
+	var pivot = arr.splice(pivotIndex, 1)[0];
+	var left = [];
+	var right = [];
+	for (var i = 0; i < arr.length; i++){
+			if (minCompFunc(arr[i], pivot)) {
+				left.push(arr[i]);
+			} else {
+				right.push(arr[i]);
+			}
+	}
+	return quickSort(left, minCompFunc).concat([pivot], quickSort(right, minCompFunc));
 }
 
 function completeTreeData (sortedData) {
@@ -203,80 +224,11 @@ function isSubString (fatherString, childString) {
 	}
 }
 
-function testIsOSLeafNode () {
-	var str = "BM.TRADE.PuDian.os.mon-blade01";
-	console.log (isOSLeafNode(str));
-}
+exports.transToTreeViewData = transToTreeViewData;
+exports.getFatherObjectID = getFatherObjectID;
+exports.quickSort = quickSort;
+exports.sortTreeViewData = sortTreeViewData;
+exports.isOSLeafNode = isOSLeafNode;
+exports.isSubString = isSubString;
 
-function testGetFatherObjectID () {
-	var childObjectID = "BM.TRADE2.ZhangJ.os.mon-blade04";
-	var fatherObjectID = getFatherObjectID(childObjectID);
-	console.log ('childObjectID: ' + childObjectID);
-	console.log ('fatherObjectID: ' + fatherObjectID);
-}
 
-function testIsSubString () {
-	var str1 = "A.b";
-	var str2 = "A.b.c";
-	if (isSubString(str1, str2)) {
-		console.log (str1 + ' is the father of ' + str2);
-	} else {
-		console.log (str1 + ' is not the father of ' + str2);
-	}
-}
-
-function testTypeof () {
-	var data = [1, "a", [1,2], {'a':1}, null]
-	for (var i = 0; i < data.length; ++i) {
-		console.log (typeof data[i]);
-	}
-}
-
-function testSimuTreeViewData () {
-    var ObjectIDArrray = ["B.b.c","A.a", 'A.b','A.b.c','A.b.d', "A", "B", "C", "B.b", "C.d"];
-	  var ObjectNameArray = ["c","a", 'b', 'c', 'd', "A", "B", "C","b", "d"];
-    var originData = [];
-    for (var i = 0; i < ObjectIDArrray.length; ++i) {
-        originData.push({'ObjectID': ObjectIDArrray[i], 'ObjectName': ObjectNameArray[i], 'WarningActive': 0});
-    }
-    // console.log ('OriginData: ');
-    // console.log (originData);
-
-    // var transData = arrayConverseToJson(originData);
-		var transData = transToTreeViewData(originData);
-		printData('transData: ' , transData);
-}
-
-function testRealTreeViewData () {
-		var originData = require ("./treeViewData.json").rspData;
-		var transData = transToTreeViewData(originData);
-
-		// for (var i = 0; i < transData.length; ++i) {
-		// 	console.log ('transData[' + i.toString() + '].items.length: ' + transData[i].items.length);
-		// 	for (var j = 0; j < transData[i].items.length; ++j) {
-		// 		console.log (transData[i].items[j].id);
-		// 	}
-		// }
-		
-		printData('transData: ' , transData);
-}
-
-function printData (valueName, value) {
-	if (null === value) return;
-	if (typeof value === "object") {
-		for (var val in value) {
-			printData(val, value[val]);
-		}
-	} else {
-		var outputDatra = valueName + " : " + value;
-		// console.log (outputDatra);
-		fs.appendFileSync (transTreeViewFileName, outputDatra + "\n");
-	}
-}
-
-// testIsOSLeafNode();
-// testGetFatherObjectID();
-// testTypeof();
-// testIsSubString();
-// testSimuTreeViewData();
-testRealTreeViewData();
