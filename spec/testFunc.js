@@ -5,7 +5,6 @@ var transToTreeViewData = funcFile.transToTreeViewData;
 var getFatherObjectID = funcFile.getFatherObjectID;
 var quickSort = funcFile.quickSort;
 var sortTreeViewData = funcFile.sortTreeViewData;
-var printData = funcFile.printData;
 var OSLeafNode = funcFile.isisOSLeafNode;
 var isSubString = funcFile.isSubString;
 
@@ -70,6 +69,18 @@ function testCompareString () {
 	console.log (str1.toLowerCase() > str2.toLowerCase());
 }
 
+function testSortTreeViewData () {
+	var originData = require ("./treeViewData.json").rspData;
+	var sortedData = sortTreeViewData(originData);
+	
+	for (i = 0; i < sortedData.length; ++i) {
+		// console.log (sortedData[i].length);
+		for (var j = 0; j < sortedData[i].length; ++j) {
+			console.log (sortedData[i][j].ObjectID);
+		}
+	}		
+}
+
 function testSimuTreeViewData () {
     var ObjectIDArrray = ["B.b.c","A.a", 'A.b','A.b.c','A.b.d', "A", "B", "C", "B.b", "C.d"];
 	  var ObjectNameArray = ["c","a", 'b', 'c', 'd', "A", "B", "C","b", "d"];
@@ -86,25 +97,26 @@ function testSimuTreeViewData () {
 }
 
 function testRealTreeViewData () {
-		var originData = require ("./treeViewData.json").rspData;
-		var transData = transToTreeViewData(originData);
+	var originData = require ("./treeViewData.json").rspData;
+	var transData = transToTreeViewData(originData);
 
-		// for (var i = 0; i < transData.length; ++i) {
-		// 	console.log ('transData[' + i.toString() + '].items.length: ' + transData[i].items.length);
-		// 	for (var j = 0; j < transData[i].items.length; ++j) {
-		// 		console.log (transData[i].items[j].id);
-		// 	}
-		// }
-		
-		printData('transData: ' , transData);
+	// for (var i = 0; i < transData.length; ++i) {
+	// 	console.log ('transData[' + i.toString() + '].items.length: ' + transData[i].items.length);
+	// 	for (var j = 0; j < transData[i].items.length; ++j) {
+	// 		console.log (transData[i].items[j].id);
+	// 	}
+	// }
+
+	printData('transData: ' , transData);
 }
 
 
 // testCompareString();
-testQuickSort();
+// testQuickSort();
 // testIsOSLeafNode();
 // testGetFatherObjectID();
 // testTypeof();
 // testIsSubString();
+// testSortTreeViewData();
 // testSimuTreeViewData();
-// testRealTreeViewData();
+testRealTreeViewData();

@@ -95,9 +95,6 @@ function sortTreeViewData (originData) {
 
 	for (i = 0; i < sortedData.length; ++i) {
 		sortedData[i] = quickSort(sortedData[i], minCompTreeData);
-		for (var j = 0; j < sortedData[i].length; ++i) {
-			console.log (sortedData[i][j].ObjectID);
-		}
 	}
 	return sortedData;
 }
@@ -136,12 +133,6 @@ function completeTreeData (sortedData) {
 			}
 		}		
 	}
-
-	// console.log('CompleteTreeData: ');
-	// for (i = 0; i < sortedData.length; ++i) {
-	// 	console.log ('TreeNodeLength: ' + sortedData[i][0].ObjectID.split('.').length 
-	// 	           + ' , node number: ' + sortedData[i].length);
-	// }
 	return sortedData;
 }
 
