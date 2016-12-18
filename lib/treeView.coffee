@@ -17,7 +17,7 @@ class TreeView extends ScrollView
               @button  class: 'btn general-font', id:'collapseAllNodes', '折叠所有节点'
               @button  class: 'btn general-font', id: 'addUpdate', '增 量 更 新'
             @label style:'font-weight:bold', for:'search-term', 'Search :'
-            @input type:'text', id:'search-term', placeholder:'I am looking for...'
+            @input type:'text', id:'search-term', placeholder:'  I am looking for...'
         @div id: 'MonitorObjectListPanel-Treeview', class: 'TreeviewClass tree-view-scroller', outlet:'TreeviewList'
         @div class: 'tree-view-resize-handle'
         @ul id:'menu', outlet: 'menu',=>
