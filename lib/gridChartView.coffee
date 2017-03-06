@@ -21,6 +21,7 @@ class Demo extends ScrollView
         @div  outlet:'gridData', =>
       @div outlet: 'chartData', =>
   attached: ->        
+    console.log 'gridChartView attached!'
     setup(this)
     @windowResize()  # 全局的window resize 操作
     @eventProcess(this)
@@ -106,4 +107,4 @@ class Demo extends ScrollView
   getURI: -> @uri
 
   getTitle: ->
-    @uri.substring(19)
+    @uri.substring(gridChartTitileHead.length)

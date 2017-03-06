@@ -5,8 +5,9 @@ TreeView = require './treeView.coffee'
 window.displayItem = []
 
 creatGridChartView = (state)->
-  Demo = require './gridChartView.coffee'
+  Demo = require './gridChartView.coffee'  
   @p = new Demo(state)
+  # console.log 'creatGridChartView!'
 
 window.getObjectID = (originalString) ->
   stringArray = originalString.split(".")
@@ -14,6 +15,8 @@ window.getObjectID = (originalString) ->
   for value in stringArray
     transString += value
   return transString
+
+
 
 module.exports =
   consumeSidebar: (@sidebar) ->
@@ -29,7 +32,7 @@ module.exports =
     window.index = 0
     window.registerRtnObjectAttrTopic   = false;
     window.IsRspQryOidRelationTopicDone = false;
-
+    window.gridChartTitileHead = "atom://gridViewDemo"
     atom.workspace.onDidChangeActivePaneItem (item)->
       if item == undefined
         return
@@ -37,8 +40,10 @@ module.exports =
       window.displayItem[item.pageID] = true;
 
     atom.workspace.addOpener (filePath) ->
-      gridChartTitileHead = "atom://gridViewDemo"
+      
+      # console.log filePath
       if filePath.substring(0, gridChartTitileHead.length) == gridChartTitileHead
+        # console.log 'Add Opener: ' + filePath 
         originalPageId = filePath.substring(gridChartTitileHead.length)
         transPageId = getObjectID(originalPageId)
         creatGridChartView({uri: filePath, gridID : transPageId, pageID: originalPageId})
